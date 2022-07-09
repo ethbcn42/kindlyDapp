@@ -33,8 +33,8 @@ class MyDocument extends Document {
             }}
           />
         </Head>
-        <link rel="icon" href="/icon.svg" />
-        <link rel="apple-touch-icon" href="/icon.svg" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
         <body>
           <Main />
           <NextScript />

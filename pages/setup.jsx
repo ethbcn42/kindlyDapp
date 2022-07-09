@@ -1,5 +1,6 @@
-import { Container } from '@chakra-ui/react';
+import { Box, Container, Heading, Stack, Text } from '@chakra-ui/react';
 import MainLayout from '@layouts/MainLayout';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react'
 import { useMoralis } from 'react-moralis'
@@ -20,8 +21,30 @@ const setup = () => {
     }
     return (
         <MainLayout>
-            <Container p={"1em"} >
-                <h1>Setup Kindly { user.get("ethAddress") }</h1>
+            <Head>
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap"
+                    rel="stylesheet"
+                />
+            </Head>
+            <Container maxW={'3xl'}>
+
+                <Stack
+                    as={Box}
+                    textAlign={'center'}
+                    spacing={{ base: 8, md: 14 }}
+                    py={{ base: 20, md: 36 }}>
+                    <Heading
+                        fontWeight={600}
+                        padding={8}
+                        fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
+                        lineHeight={'110%'}>
+                        You are 3 minutes away from escaping the tax rabbit hole. <br />
+                        <Text as={'span'} color={'#7fb5ff'}>
+                            Ready to change the world Alice?
+                        </Text>
+                    </Heading>
+                </Stack>
             </Container>
         </MainLayout>
     )
