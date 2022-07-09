@@ -10,13 +10,16 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useMoralis } from "react-moralis";
 import { FormInput } from "./FormInput";
 
 const SetupForm = () => {
+    const {user} = useMoralis();
+
     const defaultSetup = {
         percent: 20,
         charityOrganization: "",
-        savingAccount: null, //setear con hook
+        savingAccount: user && user.get("ethAddress") || null
     };
     const [configuration, setConfiguration] = useState(defaultSetup);
     const [isChecked, setIsChecked] = useState(false);
@@ -168,7 +171,10 @@ const SetupForm = () => {
                         required
                     />
                     {/* <SavinAccountChooser/> */}
-                    <Checkbox onChange={() => setIsChecked(!isChecked)}>Send the remainder to another wallet of your choice</Checkbox>
+                    <Checkbox onChange={() => {
+                        setIsChecked(!isChecked)
+                        setConfiguration({ ...configuration, savingAccount: user.get("ethAddress") })
+                    }}>Send the remainder to another wallet of your choice</Checkbox>
                     {isChecked &&
                         <FormInput
                             onChange={(e) => setConfiguration({ ...configuration, savingAccount: e.target.value })}
