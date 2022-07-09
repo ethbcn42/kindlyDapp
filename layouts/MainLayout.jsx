@@ -6,7 +6,7 @@ const MainLayout = ({children}) => {
   return (
     <>
       <Header/>
-        <Container maxW={'6xl'} minH="calc(100vh - 64px)">
+        <Container maxW={'6xl'} minH="calc(100vh - (64px + 102px) )">
           {children}
         </Container>
       <Footer/>
