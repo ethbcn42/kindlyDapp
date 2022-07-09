@@ -5,11 +5,10 @@ const MainLayout = ({children}) => {
   
   /*Rendered component: loads the header, footer and a childern(any of the other components that we want to display between) */
   return (
-    <div>
+    <>
         <Header/>
         {children}
-        <p>Main Content here</p>
-    </div>
+    </>
   )
 }
 

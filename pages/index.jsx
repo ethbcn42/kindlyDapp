@@ -10,17 +10,17 @@ import {
   useColorModeValue,
   createIcon,
 } from '@chakra-ui/react';
+import MainLayout from '@layouts/MainLayout';
 
 export default function CallToActionWithAnnotation() {
   return (
-    <>
+    <MainLayout>
       <Head>
         <link
           href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap"
           rel="stylesheet"
         />
       </Head>
-
       <Container maxW={'3xl'}>
         <Stack
           as={Box}
@@ -82,7 +82,7 @@ export default function CallToActionWithAnnotation() {
           </Stack>
         </Stack>
       </Container>
-    </>
+    </MainLayout>
   );
 }
 
