@@ -10,7 +10,7 @@ import Image from 'next/image';
 const Header = () => {
     return (
 <>
-      <Box bg='#7FB5FF' px={4}>
+      <Box shadow={"2xl"} px={4}>
         <Flex h={16} alignItems={'right'} justifyContent={'space-between'}>
           <HStack spacing={8} alignItems={'left'}>
             <Image src="/logo.svg" width="200" height="100"/>
