@@ -1,34 +1,45 @@
 import { Box, Container, Heading, Stack, Text } from '@chakra-ui/react';
+import useContract from '@hooks/useContract';
 import MainLayout from '@layouts/MainLayout';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useMoralis } from 'react-moralis'
 
 const setup = () => {
-    const { user, isAuthenticated } = useMoralis()
+    const { user, isAuthenticated, isWeb3Enabled, isWeb3EnableLoading, web3, enableWeb3 } = useMoralis()
     const router = useRouter()
+    const [signer, setSigner] = useState(null)
+    
+    useEffect(() => {
+        if (!isWeb3Enabled) {
+            enableWeb3();
+        }
+    }, [isWeb3Enabled]);
+    
+    useEffect(() => {
+        if (web3) {
+            const web3Signer = web3.getSigner();
+            setSigner(web3Signer);
+        }
+        return () => setSigner(null);
+    }, [web3]);
 
-    if (!isAuthenticated || !user) {
-        return (
-            <MainLayout>
-                <h1>Setup Kindly</h1>
-                <p>
-                    Please connect to your wallet to continue.
-                </p>
-            </MainLayout>
-        )
-    }
+    const {contract: kindly} = useContract({signer})
+
+    useEffect(() => {
+        if (isAuthenticated === false) router.replace("/");
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isAuthenticated]);
+
+    useEffect(() => {
+        if (kindly) {
+            console.log({kindly})
+        }
+    }, [kindly])
     return (
         <MainLayout>
-            <Head>
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap"
-                    rel="stylesheet"
-                />
-            </Head>
             <Container maxW={'3xl'}>
-
                 <Stack
                     as={Box}
                     textAlign={'center'}
