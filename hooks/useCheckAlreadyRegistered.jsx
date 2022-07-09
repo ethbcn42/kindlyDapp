@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useMoralis } from 'react-moralis';
-import useCheckAlreadyRegistered from './useCheckAlreadyRegistered.jsx';
+import useContract from './useContract.jsx';
 
 const useCheckAlreadyRegistered = ({signer}) => {
     const initialState = {
@@ -8,7 +8,7 @@ const useCheckAlreadyRegistered = ({signer}) => {
         registrationAddress: undefined,
     }
     const { user } = useMoralis()
-    const {contract: kindly} = useCheckAlreadyRegistered({ signer })
+    const {contract: kindly} = useContract({ signer })
     const [state, setState] = useState(initialState)
     useEffect(() => {
         async function checkIsAlreadyRegistered() {
