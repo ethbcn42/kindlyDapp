@@ -1,0 +1,182 @@
+[
+    {
+        "name": "Fistula Foundation",
+        "url": "https://www.thelifeyoucansave.org/best-charities/fistula-foundation/",
+        "address": "0x143Ee9c8c36BBF9AAE54c68f05d4CA11d805420B",
+        "logo": "https://pbs.twimg.com/profile_images/378800000440201956/2ee96965e41e37e42e8eb8cf74ed5172_400x400.png",
+        "image": "https://cdn.thelifeyoucansave.org/uploads/2019/11/Madagascar_Aug17_0763_flipped.jpg",
+        "description": "Fistula Foundation is the global leader in treating obstetric fistula, a devastating childbirth injury that leaves women incontinent, humiliated, and often shunned by their communities. In addition to covering direct surgery costs, Fistula Foundation also supports training surgeons, equipping facilities, grassroots community outreach, and holistic post-surgery reintegration.",
+        "short_description": "Fistula Foundation is focused globally on treating the childbirth injury obstetric fistula, currently funding partners in 20+ countries in Africa & Asia."
+    },
+    {
+        "name": "Living Goods",
+        "url": "https://www.thelifeyoucansave.org/best-charities/living-goods/",
+        "address": "0x8D2b33989f0B17Bc110f301EAB47c791629FA128",
+        "logo": "https://pbs.twimg.com/profile_images/1100847106372194305/6S3flEQr_400x400.png",
+        "image": "./assets/images/woman-veil.png",
+        "short_desc": "Delivering Data-Driven Health Care, Door-to-Door. ",
+        "description": "Living Goods supports and trains local community health workers in Kenya and Uganda — the majority of whom are women — to deliver lifesaving medicines, health education, diagnoses, and health products to millions of people who need them. They focus especially on preventing and treating the leading causes of child deaths."
+    },
+    {
+        "name": "Oxfam",
+        "url": "https://www.oxfam.org/en",
+        "address": "0x3D78DC0605ecFD2FF25f2fec9741691D19824812",
+        "logo": "https://pbs.twimg.com/profile_images/1252965943468339200/3iZ0zVJf_400x400.jpg",
+        "image": "https://assets.oxfamamerica.org/media/images/OES_23830_-es_Color-en_Colour-lpr_j4Mjjeo.max-800x500.jpg",
+        "short_desc": "Oxfam is a global organization working together to end the injustice of poverty.",
+        "description": "Oxfam is a confederation of 20 national organizations working together to fight poverty, its causes, and its effects. Oxfam’s work focuses on long-term development programs, emergency assistance, and political advocacy on issues including agriculture, education, health, climate change, emergency response, and more."
+    },
+    {
+        "name": "Population Services International",
+        "url": "https://www.psi.org/",
+        "address": "0x009805716c9DC414E7fE71A4B264E32BB80268C6",
+        "logo": "https://www.psi.org/wp-content/uploads/2018/05/cropped-Color-logo-without-tagline-PNG-1.png",
+        "image": "https://www.psi.org/wp-content/uploads/2020/03/DSC00959-scaled.jpg",
+        "short_desc": "PSI is a global non-profit organization dedicated to improving the health of people in the developing world.",
+        "description": "Population Services International helps women live healthier and plan the families they desire. A large part of PSI’s work focuses on sexual and reproductive health and contraception, but they also are involved with HIV, malaria, water, sanitation and hygiene, and non-communicable diseases including diabetes, hypertension, and cervical cancer."
+    },
+    {
+        "name": "Village Enterprise",
+        "url": "https://villageenterprise.org/",
+        "address": "0xfA1e95e226cef05A135e04e08eBC60Eb7bEa0143",
+        "logo": "https://pbs.twimg.com/profile_images/378800000671327798/155e6f9939a1712b0ab16b01b8b1a243_400x400.jpeg",
+        "image": "https://villageenterprise.org/wp-content/uploads/2019/11/VE-logo-no-tag-grey.png",
+        "short_desc": "We're graduating families from extreme poverty in rural Africa through entrepreneurship and innovation",
+        "description": "Village Enterprise identifies the extreme poor in Kenya and Uganda and delivers a four part program to build businesses: entrepreneurship training, a cash grant, business mentoring, and a savings group. There is strong evidence that this leads to a significant and persistent increase in income."
+    },
+    {
+        "name": "Johns Hopkins Center for Health Security",
+        "url": "https://www.centerforhealthsecurity.org/",
+        "address": "0x307181285538917c1e200675965D3461Ae7fd596",
+        "logo": "https://pbs.twimg.com/profile_images/1158734903946690562/AMPWrO4M_400x400.png",
+        "image": "./assets/images/synapses.jpg",
+        "short_desc": "Working to protect people’s health from the consequences of epidemics and disasters.",
+        "description": "The Centre for Health Security is a think tank that conducts research and advocacy focused on policies and scientific advances that can help prevent or mitigate the effects of disease outbreaks."
+    },
+    {
+        "name": "The Gates Foundation COVID-19 Funds",
+        "url": "https://www.gatesfoundation.org/philanthropypartners/funds/covid-19",
+        "address": "0xE9598FAA6fC246DBf81C56e2bE6cf9Ee2536596d",
+        "logo": "https://pbs.twimg.com/profile_images/1182061630957342720/rTA-XTJW_400x400.jpg",
+        "image": "https://www.gatesfoundation.org/philanthropypartners/static/images/gpp_logo.png",
+        "short_desc": "Combating a pandemic",
+        "description": "Research and development (R&D) are essential during a pandemic to create the tools that will protect and save lives. Equally important are the policies and plans that help countries prepare for and manage through outbreaks. Our Combating COVID-19 Fund advances work in four crucial areas: Diagnostic Tools, Vaccine Development, Therapeutics Accelerator, Protecting Vulnerable Communities"
+    },
+    {
+        "name": "The Center for Global Development",
+        "url": "https://www.cgdev.org/topics/coronavirus",
+        "address": "0x3195298fcFe9772aC77aA9865E7e8072C51938bf",
+        "logo": "https://pbs.twimg.com/profile_images/730084284120346626/BPNHoZ4H_400x400.jpg",
+        "image": "./assets/images/synapses.jpg",
+        "short_desc": "Independent research & ideas for global prosperity.",
+        "description": "At CGD, we are examining the toll that the spread of COVID-19 is taking on global development—people, systems, and economies—and how governments and international organizations can best respond. Our experts are also assessing global pandemic preparedness and financing, and in particular how the outbreak will and is affecting low- and middle-income countries—including in Africa—with already-stretched health systems. Drawing upon our work on strengthening health systems and lessons from the 2014-2016 Ebola outbreak in West Africa, we’ve put together thinking and options on how global institutions and countries can better prepare for pandemic threats today and in the future. "
+    },
+    {
+        "name": "Albert Schweitzer Foundation",
+        "url": "https://albertschweitzerfoundation.org/",
+        "address": "0xF0a9b6973B10406FF73615Ca7f1C36E967624F4A",
+        "logo": "https://files.albertschweitzerfoundation.org/1/ASF_-_Logo_264x66px.svg",
+        "image": "https://files.albertschweitzerfoundation.org/1/team-leitbild_700x400.jpg",
+        "short_desc": "Help to bring about positive change for the animals.",
+        "description": "Albert Schweitzer Foundation (ASF) conducts corporate outreach campaigns and a variety of vegetarian outreach campaigns. They are one of the first animal charities conducting corporate outreach campaigns on behalf of fishes."
+    },
+    {
+        "name": "Anima International",
+        "url": "https://animainternational.org/",
+        "address": "0x743aE4428De6D4d9F4f1f84CDbBC2A20a70Db3C4",
+        "logo": "https://pbs.twimg.com/profile_images/1116778286418472961/wRfEJZMz_400x400.jpg",
+        "image": "./assets/images/group-cliff.png",
+        "short_desc": "International organization fighting animal suffering.",
+        "description": "Anima International runs corporate campaigns, releases undercover investigations, and engages in online and offline ad campaigns and outreach. They work to build the capacity of the animal advocacy movement, including in relatively neglected regions."
+    },
+    {
+        "name": "The Humane League",
+        "url": "https://thehumaneleague.org/",
+        "address": "0x6B7d03B1273Cbf60823d4E05632a2415c398A389",
+        "logo": "https://pbs.twimg.com/profile_images/1110521920963993607/wFfbgwkt_400x400.png",
+        "image": "./assets/images/group-cliff.png",
+        "short_desc": "We are a global nonprofit ending the abuse of animals raised for food. ",
+        "description": "The Humane League runs a variety of programs that advocate for farmed animals, including corporate outreach, online veg advertising, and individual outreach. They continually seek to optimize the impact of their activities."
+    },
+    {
+        "name": "The Good Food Institute",
+        "url": "https://www.gfi.org/",
+        "address": "0x80085E036647c9FBe30803d944cb0311464F8636",
+        "logo": "https://pbs.twimg.com/profile_images/986982450420207616/Mgf2nEZY_400x400.jpg",
+        "image": "https://www.gfi.org/images/uploads/2015/12/the-good-food-institute-logo.png",
+        "short_desc": "We're using markets and food technology to change food and change the world.",
+        "description": "The Good Food Institute works in an underutilized but critically important area by promoting and developing competitive alternatives to animal-based meat, dairy, and eggs. They provide support in a variety of ways to cellular agriculture and cultured meat companies, including building relationships with distributors and retailers and driving R&D of the products."
+    },
+    {
+        "name": "Give Directly",
+        "url": "https://www.givedirectly.org/",
+        "address": "0xAD53Fc82cC6bd1447FcDf66e6A85DAABC0440343",
+        "logo": "https://cdn.givedirectly.org/b833f800af42eb7375ac4dce0c6672ef/logo.png",
+        "image": "https://34gcjd1qiymi2mbln82wcbdo-wpengine.netdna-ssl.com/wp-content/uploads/2020/04/Map-GD.svg",
+        "short_desc": "Send money directly to people in need.",
+        "description": "GiveDirectly is the first — and largest — nonprofit that lets donors like you send money directly to the world’s poorest. We believe people living in poverty deserve the dignity to choose for themselves how best to improve their lives — cash enables that choice."
+    },
+    {
+        "name": "Malaria Consortium",
+        "url": "https://www.malariaconsortium.org/",
+        "address": "0x1d7bD68dcC3e2766846CBDf83E9CEEC422c36Bd0",
+        "logo": "https://pbs.twimg.com/profile_images/918799659853844482/QZQg6zIj_400x400.jpg",
+        "image": "./assets/images/self-reliance.jpg",
+        "short_desc": "We're dedicated to the comprehensive control of malaria and other childhood infectious and neglected tropical diseases.",
+        "description": "Malaria Consortium (malariaconsortium.org) works on preventing, controlling, and treating malaria and other communicable diseases in Africa and Asia. We have only reviewed its seasonal malaria chemoprevention (SMC) program, which distributes preventive anti-malarial drugs to children 3 to 59 months old in order to prevent illness and death from malaria during the high transmission season; our recommendation is just for this part of Malaria Consortium's work."
+    },
+    {
+        "name": "Against Malaria Foundation",
+        "url": "https://www.againstmalaria.com/default.aspx",
+        "address": "0xa1E7241F2c8D02Acb18fc17259E88253B7e023b7",
+        "logo": "https://www.againstmalaria.com/images/logo_AMF.gif",
+        "image": "https://www.againstmalaria.com/images/homepageSlider_Malaria1.jpg",
+        "short_desc": "We help protect people from malaria.",
+        "description": "AMF (againstmalaria.com) provides funding for long-lasting insecticide-treated net (LLIN) distributions (for protection against malaria) in developing countries."
+    },
+    {
+        "name": "Helen Keller International",
+        "url": "https://www.hki.org/",
+        "address": "0x0b15B6192Cc82A6f7BBE945E249Edaca3E7Edde4",
+        "logo": "https://pbs.twimg.com/profile_images/1227652263503511552/obALbE3e_400x400.jpg",
+        "image": "https://www.hki.org/wp-content/uploads/2019/12/17101812162743a.jpg",
+        "short_desc": "Helen Keller, our co-founder, envisioned a world without barriers to human potential. We are continuing her work.",
+        "description": "Helen Keller International (HKI) supports programs focused on reducing malnutrition and averting blindness and poor vision; this review focuses only on HKI's work on vitamin A supplementation (VAS) in sub-Saharan Africa. HKI provides technical assistance, engages in advocacy, and contributes funding to government-run vitamin A supplementation programs."
+    },
+    {
+        "name": "Deworm the World Initiative",
+        "url": "https://www.evidenceaction.org/#deworm-the-world",
+        "address": "0x446bb02a2f21b395B166765A73cC54Bc7BB0a7EE",
+        "logo": "https://www.evidenceaction.org/wp-content/uploads/2019/03/cropped-logo.png",
+        "image": "./assets/images/self-reliance.jpg",
+        "short_desc": "Scaling proven & cost-effective solutions to global poverty.",
+        "description": "Evidence Action's Deworm the World Initiative (evidenceaction.org/#deworm-the-world) advocates for, supports, and evaluates government-run school-based deworming programs."
+    },
+    {
+        "name": "SCI Foundation",
+        "url": "https://schistosomiasiscontrolinitiative.org/",
+        "address": "0xD3f4370F33627840C54361823971Ace0D433Be1e",
+        "logo": "https://pbs.twimg.com/profile_images/1055386759641612289/DMCppST6_400x400.jpg",
+        "image": "./assets/images/self-reliance.jpg",
+        "short_desc": "We support the delivery of cost-effective and impactful health programmes in Sub-Saharan Africa, helping to create a world free from preventable disease.",
+        "description": "SCI (schistosomiasiscontrolinitiative.org) works with governments in sub-Saharan Africa to create or scale up programs that treat schistosomiasis and soil-transmitted helminthiasis (STH) ('deworming'). SCI's role has primarily been to identify country recipients, provide funding to governments for government-implemented programs, provide advisory support, and conduct monitoring and evaluation on the process and outcomes of the programs."
+    },
+    {
+        "name": "Sightsavers",
+        "url": "https://www.givewell.org/charities/sightsavers",
+        "address": "0x19E2fDc9b06E36b691Cc08BaC531eEBF0ac15164",
+        "logo": "https://pbs.twimg.com/profile_images/1009348450146799618/ig8-jMKs_400x400.jpg",
+        "image": "./assets/images/self-reliance.jpg",
+        "short_desc": "Protecting sight and fighting for disability rights.",
+        "description": "Sightsavers (http://www.sightsaversusa.org/) is a large organization with multiple program areas that focuses on preventing avoidable blindness and supporting people with impaired vision. We have only reviewed Sightsavers' work to prevent and treat neglected tropical diseases (NTDs), and, more specifically, advocating for, funding, and monitoring programs that treat schistosomiasis and soil-transmitted helminthiasis (STH) ('deworming'); our recommendation is just for Sightsavers' work on deworming."
+    },
+    {
+        "name": "END Fund",
+        "url": "https://www.givewell.org/charities/end-fund",
+        "address": "0xad77a20752D0cD9c7de6a5C82Dc2885a5ED1621B",
+        "logo": "https://end.org/cms/assets/uploads/2017/11/logo-banner-e1528990365200.png",
+        "image": "./assets/images/self-reliance.jpg",
+        "short_desc": "Our mission is to end 5 of the most prevalent neglected tropical diseases (NTDs) among the world’s poorest and most vulnerable people.",
+        "description": "The END Fund (end.org) manages grants, provides technical assistance, designs programs, and raises and directs philanthropic funding for controlling and eliminating neglected tropical diseases (NTDs). We have only reviewed its programs that treat schistosomiasis and soil-transmitted helminthiasis (STH) ('deworming'); our recommendation is just for this part of the END Fund's work."
+    }
+]
