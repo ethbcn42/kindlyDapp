@@ -40,8 +40,7 @@ import {
     };
 
 
-    const checkWalletAddress = () => {
-      };
+
     return (
       <ChakraFormControl
         rounded="md"
@@ -54,7 +53,7 @@ import {
         {type === "textarea" && <Textarea {...inputProps} {...inputStyles} />}
         {type === "text" && <Input 
             {...inputProps}
-            {...inputStyles} checker={checkWalletAddress}/>}
+            {...inputStyles}/>}
         {type === "select" && (
           <Select {...inputProps} {...inputStyles}>
             {options?.map((option, i) => (

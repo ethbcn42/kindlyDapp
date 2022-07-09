@@ -41,16 +41,45 @@ const SetupForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            const checkWalletAddress = (value) => {
+                // create regex for checking if address is valid
+                const regex = /^(0x)?[0-9a-f]{40}$/i;
+                // check if address is valid
+                return regex.test(value);
+            };
+            if (!checkWalletAddress(configuration.savingAccount)) {
+                throw {
+                    title: "Invalid wallet address",
+                    description: "Please check the wallet address",
+                    status: "error",
+                    duration: 9000,
+                    isClosable: true,
+                };
+            }
             console.log(configuration);
-            //call to contract function
-        } catch (error) {
-            console.log('error', error)
+            // call to contract function
             toast({
-                title: "Error",
-                description: "Error message pending to be changed",
-                status: "error",
+                title: "Setup successful",
+                description: "You can now use the app",
+                status: "success",
                 duration: 9000,
-                isClosable: true,
+                isClosable: true
+            });
+            // success message
+
+        } catch ({
+            title,
+            description,
+            status,
+            duration,
+            isClosable,
+        }) {
+            toast({
+                title,
+                description,
+                status,
+                duration,
+                isClosable
             });
         }
     };
