@@ -23,13 +23,14 @@ const SetupForm = () => {
     const [organizations, setOrganizations] = useState();
     const [sliderValue, setSliderValue] = useState(20);
 
+    const orgsOptions = [];
+
     const labelStyles = {
         mt: '2',
         ml: '-2.5',
         fontSize: 'sm',
     }
 
-    const orgsOptions = [];
 
 
     const toast = useToast();
@@ -54,32 +55,34 @@ const SetupForm = () => {
         }
     };
 
-    useEffect(async () => {
-        const resp = await fetch("/api/nonprofit", {
-            method: 'GET'
-        });
-
-        const gettedOrgs = await resp.json();
-        if (gettedOrgs) {
-            gettedOrgs.map((org) => {
-                orgsOptions.push({
-                    value: org.address,
-                    label: org.name,
-                    img: org.logo
-                })
+    useEffect(() => {
+        async function fetchData(){
+            const resp = await fetch("/api/nonprofit", {
+                method: 'GET'
             });
-            setOrganizations(orgsOptions);
+    
+            const gettedOrgs = await resp.json();
+            if (gettedOrgs) {
+                gettedOrgs.map((org) => {
+                    orgsOptions.push({
+                        ...org,
+                        value: org.address,
+                        label: org.name
+                    })
+                });
+                setOrganizations(orgsOptions);
+            }
         }
+        fetchData();
     }, []);
 
     return (
         <Center h="80vh" flexDir="column">
-            <Box shadow={"lg"} px={10}>
+            <Box shadow={"lg"} border="solid 1px #7fb5ff" rounded="md" px={10}>
                 <chakra.form
                     maxW="400px"
                     onSubmit={handleSubmit}
                     bg="white"
-                    rounded="md"
                     mx={4}
                     w="calc(100% - 2rem)"
                     p={4}
@@ -146,7 +149,7 @@ const SetupForm = () => {
                             required
                         />
                     }
-                    <Button type="submit" w="100%" variantColor="teal" >
+                    <Button type="submit" w="100%">
                         Set my configuration
                     </Button>
 

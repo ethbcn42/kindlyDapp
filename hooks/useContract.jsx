@@ -8,7 +8,6 @@ const useContract = ({ signer }) => {
             contract: null,
             errors: []
         }
-    
         const { Moralis, user } = useMoralis()
         const [state, setState] = useState(initialState)
         const ethers = Moralis.web3Library
@@ -34,7 +33,7 @@ const useContract = ({ signer }) => {
                 setState(initialState)
             }
         }, [user, signer]);
-    
+
         return {
             ...state,
         }

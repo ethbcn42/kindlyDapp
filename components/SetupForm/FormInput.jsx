@@ -57,8 +57,8 @@ import {
             {...inputStyles} checker={checkWalletAddress}/>}
         {type === "select" && (
           <Select {...inputProps} {...inputStyles}>
-            {options?.map((option) => (
-              <option key={`kk-${option.value}`} value={option.value}>
+            {options?.map((option, i) => (
+              <option key={`kk-${option.value}-${i}`} value={option.value}>
                 {option.label}
               </option>
             ))}
