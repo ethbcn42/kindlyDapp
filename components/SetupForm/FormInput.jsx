@@ -10,7 +10,7 @@ import {
     Switch,
     Textarea,
   } from "@chakra-ui/react";
-  import { ReactNode } from "react";
+  import { ReactNode, useState } from "react";
   
   export const FormInput = ({
     label,
@@ -28,7 +28,7 @@ import {
     containerStyles = {},
     inputStyles = {},
     labelStyles = {},
-  }) => {
+    }) => {
   
     const inputProps = {
       required,
@@ -38,7 +38,10 @@ import {
       placeholder: placeholder ? placeholder : label,
       disabled,
     };
-    
+
+
+    const checkWalletAddress = () => {
+      };
     return (
       <ChakraFormControl
         rounded="md"
@@ -49,10 +52,9 @@ import {
           {label}
         </FormLabel>
         {type === "textarea" && <Textarea {...inputProps} {...inputStyles} />}
-        {type === "text" && <Input {...inputProps} {...inputStyles} />}
-        {type === "number" && (
-          <Input type="number" {...inputProps} {...inputStyles} />
-        )}
+        {type === "text" && <Input 
+            {...inputProps}
+            {...inputStyles} checker={checkWalletAddress}/>}
         {type === "select" && (
           <Select {...inputProps} {...inputStyles}>
             {options?.map((option) => (
