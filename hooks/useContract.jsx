@@ -17,7 +17,9 @@ const useContract = ({ signer }) => {
                     const chain = await signer.getChainId()
                     const chainId = `0x${chain.toString(16)}`;
                     console.log("currentChainId:", chainId, "contractChainId: ", network.chainId);
-                    if (chainId !== network.chainId) throw { error: "Wrong ChainId" }
+                    if (chainId !== network.chainId) throw {
+                        error: "Please Connect to Goerli Network."
+                    }
                     const smartContract = new ethers.Contract(contract.addy, contract.abi, signer);
                     setState({...state, contract: smartContract})
                 } catch (error) {

@@ -11,13 +11,13 @@ const setup = () => {
     const { user, isAuthenticated, isWeb3Enabled, isWeb3EnableLoading, web3, enableWeb3 } = useMoralis()
     const router = useRouter()
     const [signer, setSigner] = useState(null)
-    
+
     useEffect(() => {
         if (!isWeb3Enabled) {
             enableWeb3();
         }
     }, [isWeb3Enabled]);
-    
+
     useEffect(() => {
         if (web3) {
             const web3Signer = web3.getSigner();
@@ -26,7 +26,7 @@ const setup = () => {
         return () => setSigner(null);
     }, [web3]);
 
-    const {contract: kindly} = useContract({signer})
+    const { contract: kindly } = useContract({ signer })
 
     useEffect(() => {
         if (isAuthenticated === false) router.replace("/");
@@ -35,7 +35,7 @@ const setup = () => {
 
     useEffect(() => {
         if (kindly) {
-            console.log({kindly})
+            console.log({ kindly })
         }
     }, [kindly])
     return (
@@ -43,7 +43,7 @@ const setup = () => {
             <Container maxW={'3xl'}>
 
                 <section>
-                <Stack
+                    <Stack
                         as={Box}
                         textAlign={'center'}
                         spacing={{ base: 8, md: 14 }}
