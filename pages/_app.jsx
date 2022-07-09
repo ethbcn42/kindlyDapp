@@ -3,7 +3,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { ToastContainer } from "react-toastify";
 
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps}) {
   return (
     <MoralisProvider
       appId={process.env.NEXT_PUBLIC_APP_ID}
