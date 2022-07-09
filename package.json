@@ -1,7 +1,7 @@
 {
   "name": "chakra",
   "version": "0.1.0",
-  "description": "Fancy Next.js app",
+  "description": "Kindly Dapp",
   "scripts": {
     "dev": "next",
     "build": "next build",
