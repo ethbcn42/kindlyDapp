@@ -12,7 +12,7 @@ const Header = () => {
     return (
 <>
       <Box shadow={"lg"} px={4}>
-        <Flex h={16} alignItems={'right'} justifyContent={'space-between'}>
+        <Flex h={16} alignItems="center" justifyContent={'space-between'}>
           <Logo />
           <HStack spacing={8} alignItems={'center'}>
             <ConnectButtonWeb3/>
