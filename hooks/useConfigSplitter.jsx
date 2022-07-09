@@ -2,10 +2,13 @@ import { useState, useEffect } from 'react'
 import { useMoralis } from 'react-moralis';
 import useContract from './useRegistryContract.jsx';
 
-const useCheckAlreadyRegistered = ({signer}) => {
+const useConfigSplitter = ({signer}) => {
     const initialState = {
-        isRegistered: undefined,
-        registrationAddress: undefined,
+        currentConfig: {
+            ong: undefined,
+            wallet: undefined,
+            percentage: undefined
+        }
     }
     const { user } = useMoralis()
     const {contract: kindly} = useContract({ signer })
@@ -29,4 +32,4 @@ const useCheckAlreadyRegistered = ({signer}) => {
     }
 }
 
-export default useCheckAlreadyRegistered
+export default useConfigSplitter

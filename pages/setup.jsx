@@ -1,6 +1,7 @@
 import { Box, Container, Heading, Stack, Text } from '@chakra-ui/react';
 import SetupForm from '@components/SetupForm';
-import useContract from '@hooks/useContract';
+import useCheckAlreadyRegistered from '@hooks/useCheckAlreadyRegistered';
+import useContract from '@hooks/useRegistryContract';
 import MainLayout from '@layouts/MainLayout';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -32,16 +33,47 @@ const setup = () => {
         if (isAuthenticated === false) router.replace("/");
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isAuthenticated]);
+    const { registrationAddress, isRegistered } = useCheckAlreadyRegistered({ signer })
 
     useEffect(() => {
-        if (kindly) {
-            console.log({ kindly })
-        }
-    }, [kindly])
+        if (isRegistered === false) router.replace("/");
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        console.log({
+            registrationAddress,
+            isRegistered,
+        })
+    }, [isRegistered]);
+
+    if (isRegistered === false) {
+        return (
+            <MainLayout>
+                <Container maxW={'3xl'}>
+                    <section>
+                        <Stack
+                            as={Box}
+                            textAlign={'center'}
+                            spacing={{ base: 8, md: 14 }}
+                            pt={{ base: 20, md: 20 }}>
+                            <Heading
+                                fontWeight={600}
+                                padding={8}
+                                fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
+                                lineHeight={'110%'}>
+                                You are 3 minutes away from escaping the tax rabbit hole. <br />
+                                <Text as={'span'} color={'#7fb5ff'}>
+                                    Ready to change the world Alice?
+                                </Text>
+                            </Heading>
+                        </Stack>
+                        <SetupForm />
+                    </section>
+                </Container>
+            </MainLayout>
+        )
+    }
     return (
         <MainLayout>
             <Container maxW={'3xl'}>
-
                 <section>
                     <Stack
                         as={Box}
@@ -53,12 +85,13 @@ const setup = () => {
                             padding={8}
                             fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
                             lineHeight={'110%'}>
-                            You are 3 minutes away from escaping the tax rabbit hole. <br />
+                            you can update anytime   <br />
                             <Text as={'span'} color={'#7fb5ff'}>
-                                Ready to change the world Alice?
+                            the charity organization and the percentage to donate.
                             </Text>
                         </Heading>
                     </Stack>
+                    <p>{registrationAddress}</p>
                     <SetupForm />
                 </section>
             </Container>
