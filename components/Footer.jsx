@@ -57,8 +57,9 @@ import Logo from './Logo';
           justify={{ base: 'center', md: 'space-between' }}
           align={{ base: 'center', md: 'center' }}>
           <Logo />
-         <Text><Flex align={"center"}>Kindly at BCNHACK 2022 with love from Spaniards in the <img src="/aticco.png" width="80" /></Flex></Text>
-            <SocialButton label={'Twitter'} href={'https://twitter.com/kindlyweb3'}>
+            <Text><Flex align={"center"}>Kindly at BCNHACK 2022 with love from Spaniards in the <img src="/aticco.png" width="80" /></Flex></Text>
+            <Stack direction={'row'} spacing={6}>
+             <SocialButton label={'Twitter'} href={'https://twitter.com/kindlyweb3'}>
               <FaTwitter />
             </SocialButton>
             <SocialButton label={'YouTube'} href={'https://twitter.com/kindlyweb3'}>
