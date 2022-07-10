@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useMoralis } from 'react-moralis';
-import useContract from './useConfigSplitter.jsx';
+import useContract from './useChildContract.jsx';
 
 const useConfigSplitter = ({signer, address}) => {
     const initialState = {
@@ -11,24 +11,32 @@ const useConfigSplitter = ({signer, address}) => {
         }
     }
     const { user } = useMoralis()
-    const {contract: kindly} = useContract({ signer, address })
+    const {contract: splitter} = useContract({ signer, address })
     const [state, setState] = useState(initialState)
     useEffect(() => {
-        async function checkIsAlreadyRegistered() {
-            const registrationAddress = await kindly.Registry(user.get("ethAddress"));
-            console.log("registrationAddress: ", registrationAddress)
+        async function fetchData() {
+            const ong = await splitter.ong();
+            const wallet = await splitter.wallet();
+            const percentage = await splitter.percent();
+            const currentConfig = {
+                ong,
+                wallet,
+                percentage
+            }
+
+            console.log("currentConfig: ", currentConfig)
             setState({ 
                 ...state,
-                isRegistered: registrationAddress !== "0x0000000000000000000000000000000000000000",
-                registrationAddress
+                currentConfig
             })
         }
 
-        if (user && kindly) checkIsAlreadyRegistered();
-    }, [user, kindly]);
+        if (user && splitter) fetchData();
+    }, [user, splitter]);
 
     return {
         ...state,
+        splitter,
     }
 }
 

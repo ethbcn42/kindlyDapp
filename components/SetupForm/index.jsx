@@ -35,8 +35,6 @@ const SetupForm = ({ contract, update }) => {
         fontSize: 'sm',
     }
 
-
-
     const toast = useToast();
     const router = useRouter();
 
@@ -157,23 +155,11 @@ const SetupForm = ({ contract, update }) => {
         fetchData();
     }, []);
 
-    useEffect(() => {
-        async function fetchDataFromContract () {
-            if (update && contract) {
-                console.log("LLEGO:", contract, update);
-                const ONGFromcontract = await contract.ong();
-                const walletFromcontract = await contract.wallet();
-                const percentFromcontract = await contract.percent();
-                setConfiguration({
-                    ...configuration,
-                    charityOrganization: ONGFromcontract,
-                    savingAccount: walletFromcontract,
-                    percent: percentFromcontract
-                });
-            }
-        }
-        fetchDataFromContract();
-    }, [update, contract]);
+
+
+  /*   useEffect(() => {
+        
+    }, [update, contract]); */
 
     return (
         <Center h="80vh" flexDir="column">
