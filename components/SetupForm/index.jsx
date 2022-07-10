@@ -18,14 +18,14 @@ const SetupForm = ({ contract, update }) => {
 
     const defaultSetup = {
         percent: 20,
-        charityOrganization: "",
+        ong: undefined,
         savingAccount: user && user.get("ethAddress") || null
     };
 
     const [configuration, setConfiguration] = useState(defaultSetup);
+
     const [isChecked, setIsChecked] = useState(false);
     const [organizations, setOrganizations] = useState();
-    const [sliderValue, setSliderValue] = useState(20);
 
     const orgsOptions = [];
 
@@ -58,7 +58,7 @@ const SetupForm = ({ contract, update }) => {
                     isClosable: true,
                 };
             }
-            console.log(configuration);
+            console.log({configuration});
             // call to contract function
             if (!update) {
                 const txDeploy = await contract.createParticular(configuration.percent, configuration.charityOrganization, configuration.savingAccount);
@@ -139,7 +139,7 @@ const SetupForm = ({ contract, update }) => {
             const resp = await fetch("/api/nonprofit", {
                 method: 'GET'
             });
-    
+
             const gettedOrgs = await resp.json();
             if (gettedOrgs) {
                 gettedOrgs.map((org) => {
@@ -177,8 +177,9 @@ const SetupForm = ({ contract, update }) => {
                             Percentage
                         </FormLabel>
                         <Box pt={6} pb={2}>
-                            <Slider aria-label='slider-ex-6' onChange={(val) => {
-                                setSliderValue(val);
+                            <Slider 
+                            defaultValue={configuration.percent}
+                            aria-label='slider-ex-6' onChange={(val) => {
                                 setConfiguration({ ...configuration, percent: val })
                             }}
                             >
@@ -192,7 +193,7 @@ const SetupForm = ({ contract, update }) => {
                                     75%
                                 </SliderMark>
                                 <SliderMark
-                                    value={sliderValue}
+                                    value={configuration.percent}
                                     textAlign='center'
                                     bg='blue.500'
                                     color='white'
@@ -200,7 +201,7 @@ const SetupForm = ({ contract, update }) => {
                                     ml='-5'
                                     w='12'
                                 >
-                                    {sliderValue}%
+                                    {configuration.percent}%
                                 </SliderMark>
                                 <SliderTrack>
                                     <SliderFilledTrack />

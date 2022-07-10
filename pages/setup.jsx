@@ -40,15 +40,6 @@ const setup = () => {
     }, [isAuthenticated]);
     const { registrationAddress, isRegistered } = useCheckAlreadyRegistered({ signer })
 
-    useEffect(() => {
-        if (isRegistered === false) router.replace("/");
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        console.log({
-            registrationAddress,
-            isRegistered,
-        })
-    }, [isRegistered]);
-
     if (isRegistered === false) {
         return <CreateSplitter />
     }
