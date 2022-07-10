@@ -37,7 +37,8 @@ export const FormInput = ({
     labelStyles
   };
 
-  const labelStyles = {
+  const particularLabelStyles = {
+    ...inputProps.labelStyles,
     mt: '2',
     ml: '0',
 }
@@ -56,7 +57,7 @@ export const FormInput = ({
           alignItems="center"
           gap={2}
         >
-          <FormLabel fontWeight="light" {...labelStyles}>
+          <FormLabel fontWeight="light" {...particularLabelStyles}>
             {label}
           </FormLabel>
           <Tooltip py={2} rounded={"md"} shadow={"md"} color="white" shouldWrapChildren label=
