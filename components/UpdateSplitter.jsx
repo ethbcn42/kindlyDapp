@@ -31,7 +31,7 @@ const UpdateSplitter = ({signer, registrationAddress}) => {
                         </Heading>
                     </Stack>
                     <p>{registrationAddress}</p>
-                    <SetupForm contract={splitter} update />
+                    <SetupForm contract={splitter} update currentConfig={currentConfig} />
                 </section>
             </Container>
         </MainLayout>

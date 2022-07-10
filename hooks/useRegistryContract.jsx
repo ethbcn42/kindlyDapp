@@ -33,10 +33,6 @@ const useContract = ({ signer }) => {
             if (user && signer && !state.contract) instantiateContract()
         }, [user, signer]);
 
-        useEffect(() => {
-            console.log({state});
-        }, [state]);
-
         return {
             contract: state.contract,
             errors: state.errors
