@@ -98,8 +98,9 @@ const SetupForm = ({ contract, update, currentConfig }) => {
                 const contractONG = await contract.ong();
                 const contractWallet = await contract.wallet();
 
-                if (contractONG !== configuration.ong) {
+                if (contractONG && contractONG !== configuration.ong) {
                     const { merkleProof } = await (await fetch(`/api/nonprofit/${configuration.ong}`)).json()
+                    console.log({ merkleProof });
                     const txOng = await contract.setONG(configuration.ong, merkleProof);
                     notifySentTX();
                     await txOng.wait();
@@ -125,7 +126,7 @@ const SetupForm = ({ contract, update, currentConfig }) => {
                     });
                 }
 
-                if (configuration.percent !== contract.percent()) {
+                if (configuration.percent !== (await contract.percent()).toNumber()) {
                     const txPercent = await contract.setPercent(configuration.percent);
                     notifySentTX();
                     await txPercent.wait();
@@ -143,10 +144,13 @@ const SetupForm = ({ contract, update, currentConfig }) => {
 
             toast({
                 title: "Setup successful",
-                description: "You can now use the app",
+                description: "You can now start using the application",
                 status: "success",
                 duration: 9000,
-                isClosable: true
+                isClosable: true,
+                onCloseComplete: () => {
+                    router.reload();
+                }
             });
             // success message
 

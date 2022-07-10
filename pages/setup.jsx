@@ -35,9 +35,9 @@ const setup = () => {
     //const { contract: kindly } = useContract({ signer })
 
     useEffect(() => {
-        if (isAuthenticated === false) router.replace("/");
+        if (isAuthenticated === false && isWeb3Enabled) router.replace("/");
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isAuthenticated]);
+    }, [isAuthenticated, isWeb3Enabled]);
     const { registrationAddress, isRegistered } = useCheckAlreadyRegistered({ signer })
 
     if (isRegistered === false) {
