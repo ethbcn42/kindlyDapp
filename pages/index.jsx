@@ -9,6 +9,7 @@ import {
   Icon,
   useColorModeValue,
   createIcon,
+  Link,
 } from '@chakra-ui/react';
 import MainLayout from '@layouts/MainLayout';
 import { useRouter } from 'next/router';
@@ -53,9 +54,9 @@ export default function CallToActionWithAnnotation() {
               >
             Get Started
           </Button>
-          <Button variant={'link'} colorScheme={'blue'} size={'sm'}>
+          <Link href="https://www.notion.so/Kindly-e5d246fbbf9047f19f40abff294a10b1" target={"_blank"} rel={"no-rel"}  variant={'link'} colorScheme={'blue'} size={'sm'}>
             Learn more
-          </Button>
+          </Link>
           <Box>
             <Icon
               as={Arrow}

@@ -3,13 +3,21 @@ import useConfigSplitter from '@hooks/useConfigSplitter'
 import MainLayout from '@layouts/MainLayout'
 import React from 'react'
 import SetupForm from './SetupForm'
+import { CopyBlock } from "react-code-blocks";
+import { createSnippet } from '@utils/kindly'
+
 
 const UpdateSplitter = ({signer, registrationAddress}) => {
 
-    const {currentConfig, splitter} = useConfigSplitter({
+    const { currentConfig, splitter } = useConfigSplitter({
         signer,
         address: registrationAddress
-    })
+    });
+
+    
+
+    // ADD SNIPPETS CODE
+    // Create a function that returns an string template
     return (
         <MainLayout>
             <Container maxW={'3xl'}>
@@ -30,7 +38,11 @@ const UpdateSplitter = ({signer, registrationAddress}) => {
                             </Text>
                         </Heading>
                     </Stack>
-                    <p>{registrationAddress}</p>
+                    {registrationAddress && <CopyBlock
+                        text={createSnippet(registrationAddress)}
+                        language={"javascript"}
+                        theme={'dracula'}
+                    />}
                     <SetupForm contract={splitter} update currentConfig={currentConfig} />
                 </section>
             </Container>
