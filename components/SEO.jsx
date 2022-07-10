@@ -4,8 +4,8 @@ import Head from 'next/head';
 const SEO = ({
     title = 'Kindly',
     description = 'Kindly its a free, friendly & open-source platform that automatizes donations to non-profit organizations, which allows NFT creators to deduct taxes.',
-    images = [{ url: "https://kindly-dapp.vercel.app/logo.png" }],
-    url = "https://kindly-dapp.vercel.app",
+    images = [{ url: "https://kindlyweb3.vercel.app/logo.png" }],
+    url = "https://kindlyweb3.vercel.app",
 }) => {
     return (
         <Head>
