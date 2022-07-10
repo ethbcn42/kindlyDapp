@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 import { FormInput } from "./FormInput";
 
-const SetupForm = ({ contract, update }) => {
+const SetupForm = ({ contract, update, currentConfig }) => {
     const { user } = useMoralis();
 
     const defaultSetup = {
@@ -23,6 +23,17 @@ const SetupForm = ({ contract, update }) => {
     };
 
     const [configuration, setConfiguration] = useState(defaultSetup);
+
+    useEffect(() => {
+        if (currentConfig) {
+            setConfiguration({
+                percent: currentConfig.percent,
+                ong: currentConfig.ong,
+                savingAccount: currentConfig.wallet
+            });
+            console.log({ currentConfig });
+        }
+    }, [currentConfig]);
 
     const [isChecked, setIsChecked] = useState(false);
     const [organizations, setOrganizations] = useState();
@@ -38,6 +49,26 @@ const SetupForm = ({ contract, update }) => {
     const toast = useToast();
     const router = useRouter();
 
+
+    const notifySentTX = () => {
+        toast({
+            title: "Transaction sent",
+            description: "Your transaction has been sent to the blockchain. It may take a few minutes to be mined.",
+            status: "info",
+            duration: 9000,
+            isClosable: true,
+        });
+    }
+
+    const notifyUpdate = (field) => {
+        toast({
+            title: `Configuration updated for ${field}`,
+            description: `Your configuration for ${field} has been updated.`,
+            status: "success",
+            duration: 9000,
+            isClosable: true,
+        });
+    }
 
     //CONSULTAR: spinner?? comprobaciones desde el front (que la address sea hex, el porcentaje puede ser con decimales?)
     const handleSubmit = async (e) => {
@@ -58,21 +89,20 @@ const SetupForm = ({ contract, update }) => {
                     isClosable: true,
                 };
             }
-            console.log({configuration});
             // call to contract function
             if (!update) {
-                console.log("create", configuration.percent, configuration.ong, configuration.savingAccount, contract);
                 const txDeploy = await contract.createParticular(configuration.percent, configuration.ong, configuration.savingAccount);
-                //const result = await txDeploy.wait();
-                //console.log({result});
-            } /* else {
+                notifySentTX();
+                await txDeploy.wait();
+            } else {
                 const contractONG = await contract.ong();
                 const contractWallet = await contract.wallet();
 
                 if (contractONG !== configuration.ong) {
                     const { merkleProof } = await (await fetch(`/api/nonprofit/${configuration.ong}`)).json()
                     const txOng = await contract.setONG(configuration.ong, merkleProof);
-                    const result = await txOng.wait();
+                    notifySentTX();
+                    await txOng.wait();
                     toast({
                         title: "ONG updated",
                         description: "ONG updated successfully",
@@ -84,7 +114,8 @@ const SetupForm = ({ contract, update }) => {
 
                 if (contractWallet !== configuration.savingAccount) {
                     const txWallet = await contract.setWallet(configuration.savingAccount);
-                    const result = await txWallet.wait();
+                    notifySentTX();
+                    await txWallet.wait();
                     toast({
                         title: "Wallet updated",
                         description: "Wallet updated successfully",
@@ -96,7 +127,8 @@ const SetupForm = ({ contract, update }) => {
 
                 if (configuration.percent !== contract.percent()) {
                     const txPercent = await contract.setPercent(configuration.percent);
-                    const result = await txPercent.wait();
+                    notifySentTX();
+                    await txPercent.wait();
                     toast({
                         title: "Percent updated",
                         description: "Percent updated successfully",
@@ -105,7 +137,7 @@ const SetupForm = ({ contract, update }) => {
                         isClosable: true,
                     });
                 }
-            } */
+            }
 
 
 
@@ -178,10 +210,10 @@ const SetupForm = ({ contract, update }) => {
                         </FormLabel>
                         <Box pt={6} pb={2}>
                             <Slider 
-                            defaultValue={configuration.percent}
-                            aria-label='slider-ex-6' onChange={(val) => {
-                                setConfiguration({ ...configuration, percent: val })
-                            }}
+                                defaultValue={configuration.percent}
+                                aria-label='slider-ex-6' onChange={(val) => {
+                                    setConfiguration({ ...configuration, percent: val })
+                                }}
                             >
                                 <SliderMark value={25} {...labelStyles}>
                                     25%
@@ -194,6 +226,7 @@ const SetupForm = ({ contract, update }) => {
                                 </SliderMark>
                                 <SliderMark
                                     value={configuration.percent}
+                                    defaultValue={configuration.percent}
                                     textAlign='center'
                                     bg='blue.500'
                                     color='white'
@@ -217,6 +250,8 @@ const SetupForm = ({ contract, update }) => {
                         type="select"
                         options={organizations}
                         placeholder="Select a organization"
+                        value={configuration.ong}
+                        defaultValue={configuration.ong}
                         required
                     />
                     {/* <SavinAccountChooser/> */}

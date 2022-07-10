@@ -45,7 +45,7 @@ const setup = () => {
     }
 
     if (isRegistered === true) {
-        return <UpdateSplitter signer={signer} registrationAddress={registrationAddress} />
+        return <UpdateSplitter signer={signer} registrationAddress={registrationAddress}  />
     }
 }
 

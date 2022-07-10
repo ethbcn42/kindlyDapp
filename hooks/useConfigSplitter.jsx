@@ -7,7 +7,7 @@ const useConfigSplitter = ({signer, address}) => {
         currentConfig: {
             ong: undefined,
             wallet: undefined,
-            percentage: undefined
+            percent: undefined
         }
     }
     const { user } = useMoralis()
@@ -17,11 +17,11 @@ const useConfigSplitter = ({signer, address}) => {
         async function fetchData() {
             const ong = await splitter.ong();
             const wallet = await splitter.wallet();
-            const percentage = (await splitter.percent()).toNumber();
+            const percent = (await splitter.percent()).toNumber();
             const currentConfig = {
                 ong,
                 wallet,
-                percentage
+                percent
             }
 
             console.log("currentConfig: ", currentConfig)
