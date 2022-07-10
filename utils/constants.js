@@ -7,6 +7,10 @@ export const network = {
     }
 }
 
+export const child = {
+    abi : []
+}
+
 export default {
     network,
 }

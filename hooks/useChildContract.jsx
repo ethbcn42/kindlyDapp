@@ -1,8 +1,8 @@
-import { network } from '@utils/constants';
+import { child, network } from '@utils/constants';
 import { useState, useEffect } from 'react'
 import { useMoralis } from 'react-moralis';
 import { toast } from 'react-toastify';
-const useContract = ({ signer }) => {
+const useContract = ({ signer, address }) => {
         const {contract} = network;
         const initialState = {
             contract: null,
@@ -19,8 +19,8 @@ const useContract = ({ signer }) => {
                     if (chainId !== network.chainId) throw {
                         error: "Please Connect to Goerli Network."
                     }
-                    const smartContract = new ethers.Contract(contract.addy, contract.abi, signer);
-                    setState({...state, contract: smartContract})
+                    const smartContract = new ethers.Contract(address, child.abi, signer);
+                    setState({ ...state, contract: smartContract })
                 } catch (error) {
                     console.error(error);
                     setState({ contract: null, errors: [...state.errors, error.error]})
@@ -34,6 +34,7 @@ const useContract = ({ signer }) => {
                 setState(initialState)
             }
         }, [user, signer]);
+
 
         return {
             ...state,

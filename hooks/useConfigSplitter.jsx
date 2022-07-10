@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useMoralis } from 'react-moralis';
-import useContract from './useRegistryContract.jsx';
+import useContract from './useConfigSplitter.jsx';
 
-const useConfigSplitter = ({signer}) => {
+const useConfigSplitter = ({signer, address}) => {
     const initialState = {
         currentConfig: {
             ong: undefined,
@@ -11,7 +11,7 @@ const useConfigSplitter = ({signer}) => {
         }
     }
     const { user } = useMoralis()
-    const {contract: kindly} = useContract({ signer })
+    const {contract: kindly} = useContract({ signer, address })
     const [state, setState] = useState(initialState)
     useEffect(() => {
         async function checkIsAlreadyRegistered() {

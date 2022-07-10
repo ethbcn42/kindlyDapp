@@ -13,14 +13,15 @@ import { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 import { FormInput } from "./FormInput";
 
-const SetupForm = () => {
-    const {user} = useMoralis();
+const SetupForm = ({ contract, update }) => {
+    const { user } = useMoralis();
 
     const defaultSetup = {
         percent: 20,
         charityOrganization: "",
         savingAccount: user && user.get("ethAddress") || null
     };
+
     const [configuration, setConfiguration] = useState(defaultSetup);
     const [isChecked, setIsChecked] = useState(false);
     const [organizations, setOrganizations] = useState();
@@ -61,6 +62,54 @@ const SetupForm = () => {
             }
             console.log(configuration);
             // call to contract function
+            if (!update) {
+                const txDeploy = await contract.createParticular(configuration.percent, configuration.charityOrganization, configuration.savingAccount);
+                const result = await txDeploy.wait();
+                console.log(result);
+            } else {
+                const contractONG = await contract.ong();
+                const contractWallet = await contract.wallet();
+
+                if (contractONG !== configuration.charityOrganization) {
+                    const { merkleProof } = await (await fetch(`/api/nonprofit/${configuration.charityOrganization}`)).json()
+                    const txOng = await contract.setONG(configuration.charityOrganization, merkleProof);
+                    const result = await txOng.wait();
+                    toast({
+                        title: "ONG updated",
+                        description: "ONG updated successfully",
+                        status: "success",
+                        duration: 9000,
+                        isClosable: true,
+                    });
+                }
+
+                if (contractWallet !== configuration.savingAccount) {
+                    const txWallet = await contract.setWallet(configuration.savingAccount);
+                    const result = await txWallet.wait();
+                    toast({
+                        title: "Wallet updated",
+                        description: "Wallet updated successfully",
+                        status: "success",
+                        duration: 9000,
+                        isClosable: true,
+                    });
+                }
+
+                if (configuration.percent !== contract.percent()) {
+                    const txPercent = await contract.setPercent(configuration.percent);
+                    const result = await txPercent.wait();
+                    toast({
+                        title: "Percent updated",
+                        description: "Percent updated successfully",
+                        status: "success",
+                        duration: 9000,
+                        isClosable: true,
+                    });
+                }
+            }
+
+
+
             toast({
                 title: "Setup successful",
                 description: "You can now use the app",
@@ -107,6 +156,24 @@ const SetupForm = () => {
         }
         fetchData();
     }, []);
+
+    useEffect(() => {
+        async function fetchDataFromContract () {
+            if (update && contract) {
+                console.log("LLEGO:", contract, update);
+                const ONGFromcontract = await contract.ong();
+                const walletFromcontract = await contract.wallet();
+                const percentFromcontract = await contract.percent();
+                setConfiguration({
+                    ...configuration,
+                    charityOrganization: ONGFromcontract,
+                    savingAccount: walletFromcontract,
+                    percent: percentFromcontract
+                });
+            }
+        }
+        fetchDataFromContract();
+    }, [update, contract]);
 
     return (
         <Center h="80vh" flexDir="column">

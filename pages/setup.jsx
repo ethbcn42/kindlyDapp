@@ -2,11 +2,14 @@ import { Box, Container, Heading, Stack, Text } from '@chakra-ui/react';
 import SetupForm from '@components/SetupForm';
 import useCheckAlreadyRegistered from '@hooks/useCheckAlreadyRegistered';
 import useContract from '@hooks/useRegistryContract';
+import useChildContract from '@hooks/useChildContract';
+
 import MainLayout from '@layouts/MainLayout';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import { useMoralis } from 'react-moralis'
+import { child } from '@utils/constants';
 
 const setup = () => {
     const { user, isAuthenticated, isWeb3Enabled, isWeb3EnableLoading, web3, enableWeb3 } = useMoralis()
@@ -44,6 +47,9 @@ const setup = () => {
         })
     }, [isRegistered]);
 
+    const { contract: childContract } = useChildContract({ signer: signer, address: child.address })
+
+
     if (isRegistered === false) {
         return (
             <MainLayout>
@@ -65,7 +71,7 @@ const setup = () => {
                                 </Text>
                             </Heading>
                         </Stack>
-                        <SetupForm />
+                        <SetupForm contract={kindly} />
                     </section>
                 </Container>
             </MainLayout>
@@ -92,7 +98,7 @@ const setup = () => {
                         </Heading>
                     </Stack>
                     <p>{registrationAddress}</p>
-                    <SetupForm />
+                    <SetupForm contract={childContract} update />
                 </section>
             </Container>
         </MainLayout>
