@@ -21,6 +21,8 @@ const SetupForm = ({ contract, update, currentConfig }) => {
     };
 
     const [configuration, setConfiguration] = useState(defaultSetup);
+    const [percentOpened, setPercentOpened] = useState(false);
+    const [saverOpened, setSaverOpened] = useState(false);
 
     useEffect(() => {
         if (currentConfig) {
@@ -136,8 +138,6 @@ const SetupForm = ({ contract, update, currentConfig }) => {
                 }
             }
 
-
-
             toast({
                 title: "Setup successful",
                 description: "You can now start using the application",
@@ -215,14 +215,14 @@ const SetupForm = ({ contract, update, currentConfig }) => {
                             <Tooltip py={2} rounded={"md"} shadow={"md"} color="white" shouldWrapChildren label=
                                 {
                                     update ? "Here you can modify the percentage you want to donate (based on your country's tax rate)."
-                                        : "First select the tax rate for the sale of NFTs in your country of residence."}
-
+                                        : "First select the tax rate for the sale of NFTs in your country of residence."
+                                }
+                                isOpen={percentOpened}
                             >
                                 <Flex>
-                                    <AiOutlineQuestionCircle color="#7fb5ff" />
+                                    <AiOutlineQuestionCircle color="#7fb5ff" onClick={() =>setPercentOpened(!percentOpened)}/>
                                 </Flex>
-                            </Tooltip>
-
+                            </Tooltip> 
                         </Flex>
                         <Box pt={6} pb={2}>
                             <Slider
@@ -260,53 +260,42 @@ const SetupForm = ({ contract, update, currentConfig }) => {
                         </Box>
 
                     </ChakraFormControl>
-                    <Flex
-                        alignItems="center"
-                        gap={3}
-                    >
                         <FormInput
                             onChange={(e) => setConfiguration({ ...configuration, ong: e.target.value })}
                             label={"Charity organization"}
                             type="select"
-                            options={organizations}
+                            options={{organizations, update}} 
                             placeholder="Select a organization"
                             value={configuration.ong}
                             defaultValue={configuration.ong}
                             required
                         />
+                    <Flex
+                        alignItems="center"
+                        gap={2}
+                    >
+                        <FormLabel fontWeight="light" {...labelStyles} fontSize="m" ml='0'>
+                            Remainder destination address
+                        </FormLabel>
+                        
                         <Tooltip py={2} rounded={"md"} shadow={"md"} color="white" shouldWrapChildren label=
                             {
-                                update ? "Would you like to change NGO for your donations? "
-                                    : "Now select the ONG or social good project you want to support."}
-
+                                update ? "Would you like to change the wallet that receives the funds?"
+                                    : " Finally, check if the wallet to which you want to allocate your funds is the correct one (by default the wallet with which you have connected will appear)."}
+                                isOpen={saverOpened}
                         >
                             <Flex>
-                                <AiOutlineQuestionCircle color="#7fb5ff" />
+                                <AiOutlineQuestionCircle color="#7fb5ff"  onClick={() =>setSaverOpened(!saverOpened)}/>
                             </Flex>
                         </Tooltip>
                     </Flex>
-                    <Flex
-                        alignItems="center"
-                        gap={3}
-                    >
-                        <Checkbox onChange={() => {
+                    <Checkbox onChange={() => {
                             setIsChecked(!isChecked)
                             setConfiguration({ ...configuration, savingAccount: user.get("ethAddress") })
                         }}
                         >Send the remainder to another wallet of your choice
 
                         </Checkbox>
-                        <Tooltip py={2} rounded={"md"} shadow={"md"} color="white" shouldWrapChildren label=
-                            {
-                                update ? "Would you like to change the wallet that receives the funds?"
-                                    : " Finally, check if the wallet to which you want to allocate your funds is the correct one (by default the wallet with which you have connected will appear)."}
-
-                        >
-                            <Flex>
-                                <AiOutlineQuestionCircle color="#7fb5ff" />
-                            </Flex>
-                        </Tooltip>
-                    </Flex>
                     {isChecked &&
                         <FormInput
                             onChange={(e) => setConfiguration({ ...configuration, savingAccount: e.target.value })}
