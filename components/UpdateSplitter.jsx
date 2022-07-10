@@ -32,18 +32,20 @@ const UpdateSplitter = ({signer, registrationAddress}) => {
                             padding={8}
                             fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
                             lineHeight={'110%'}>
-                            you can update anytime   <br />
+                            Is there anything you would like to  <br />
                             <Text as={'span'} color={'#7fb5ff'}>
-                                the charity organization and the percentage to donate.
+                            modify
                             </Text>
+                            ?
                         </Heading>
                     </Stack>
+                    <SetupForm contract={splitter} update currentConfig={currentConfig} />
+                    <Text>Here are the instructions, you are one step away from getting out of the rabbit hole.</Text>
                     {registrationAddress && <CopyBlock
                         text={createSnippet(registrationAddress)}
                         language={"javascript"}
                         theme={'dracula'}
                     />}
-                    <SetupForm contract={splitter} update currentConfig={currentConfig} />
                 </section>
             </Container>
         </MainLayout>

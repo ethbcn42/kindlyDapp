@@ -1,17 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 import {
-    Box, Button, Center, chakra, Text, useToast, Checkbox, Slider,
-    SliderTrack,
-    SliderFilledTrack,
-    SliderThumb,
-    SliderMark,
-    FormLabel,
-    FormControl as ChakraFormControl,
+    Box, Button, Center, chakra, useToast, Checkbox, Slider,
+    SliderTrack, SliderFilledTrack, SliderThumb, SliderMark,
+    FormLabel, FormControl as ChakraFormControl, Tooltip, Flex,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 import { FormInput } from "./FormInput";
+import { AiOutlineQuestionCircle } from "react-icons/ai";
+
 
 const SetupForm = ({ contract, update, currentConfig }) => {
     const { user } = useMoralis();
@@ -172,7 +170,7 @@ const SetupForm = ({ contract, update, currentConfig }) => {
     };
 
     useEffect(() => {
-        async function fetchData(){
+        async function fetchData() {
             const resp = await fetch("/api/nonprofit", {
                 method: 'GET'
             });
@@ -209,11 +207,27 @@ const SetupForm = ({ contract, update, currentConfig }) => {
                         rounded="md"
                         mb={4}
                     >
-                        <FormLabel fontWeight="light" {...labelStyles} fontSize="m" ml='0'>
-                            Percentage
-                        </FormLabel>
+                        <Flex
+                            alignItems="center"
+                            gap={2}
+                        >
+                            <FormLabel fontWeight="light" {...labelStyles} fontSize="m" ml='0'>
+                                Percentage
+                            </FormLabel>
+                            <Tooltip py={2} rounded={"md"} shadow={"md"} color="white" shouldWrapChildren label=
+                                {
+                                    update ? "Here you can modify the percentage you want to donate (based on your country's tax rate)."
+                                        : "First select the tax rate for the sale of NFTs in your country of residence."}
+
+                            >
+                                <Flex>
+                                    <AiOutlineQuestionCircle color="#7fb5ff" />
+                                </Flex>
+                            </Tooltip>
+
+                        </Flex>
                         <Box pt={6} pb={2}>
-                            <Slider 
+                            <Slider
                                 defaultValue={configuration.percent}
                                 aria-label='slider-ex-6' onChange={(val) => {
                                     setConfiguration({ ...configuration, percent: val })
@@ -241,27 +255,60 @@ const SetupForm = ({ contract, update, currentConfig }) => {
                                     {configuration.percent}%
                                 </SliderMark>
                                 <SliderTrack >
-                                    <SliderFilledTrack/>
+                                    <SliderFilledTrack />
                                 </SliderTrack>
                                 <SliderThumb />
                             </Slider>
                         </Box>
-                    </ChakraFormControl>
 
-                    <FormInput
-                        onChange={(e) => setConfiguration({ ...configuration, ong: e.target.value })}
-                        label="Charity organization"
-                        type="select"
-                        options={organizations}
-                        placeholder="Select a organization"
-                        value={configuration.ong}
-                        defaultValue={configuration.ong}
-                        required
-                    />
-                    <Checkbox onChange={() => {
-                        setIsChecked(!isChecked)
-                        setConfiguration({ ...configuration, savingAccount: user.get("ethAddress") })
-                    }}>Send the remainder to another wallet of your choice</Checkbox>
+                    </ChakraFormControl>
+                    <Flex
+                        alignItems="center"
+                        gap={3}
+                    >
+                        <FormInput
+                            onChange={(e) => setConfiguration({ ...configuration, ong: e.target.value })}
+                            label={"Charity organization"}
+                            type="select"
+                            options={organizations}
+                            placeholder="Select a organization"
+                            value={configuration.ong}
+                            defaultValue={configuration.ong}
+                            required
+                        />
+                        <Tooltip py={2} rounded={"md"} shadow={"md"} color="white" shouldWrapChildren label=
+                            {
+                                update ? "Would you like to change NGO for your donations? "
+                                    : "Now select the ONG or social good project you want to support."}
+
+                        >
+                            <Flex>
+                                <AiOutlineQuestionCircle color="#7fb5ff" />
+                            </Flex>
+                        </Tooltip>
+                    </Flex>
+                    <Flex
+                        alignItems="center"
+                        gap={3}
+                    >
+                        <Checkbox onChange={() => {
+                            setIsChecked(!isChecked)
+                            setConfiguration({ ...configuration, savingAccount: user.get("ethAddress") })
+                        }}
+                        >Send the remainder to another wallet of your choice
+
+                        </Checkbox>
+                        <Tooltip py={2} rounded={"md"} shadow={"md"} color="white" shouldWrapChildren label=
+                            {
+                                update ? "Would you like to change the wallet that receives the funds?"
+                                    : " Finally, check if the wallet to which you want to allocate your funds is the correct one (by default the wallet with which you have connected will appear)."}
+
+                        >
+                            <Flex>
+                                <AiOutlineQuestionCircle color="#7fb5ff" />
+                            </Flex>
+                        </Tooltip>
+                    </Flex>
                     {isChecked &&
                         <FormInput
                             onChange={(e) => setConfiguration({ ...configuration, savingAccount: e.target.value })}
@@ -272,12 +319,12 @@ const SetupForm = ({ contract, update, currentConfig }) => {
                         />
                     }
                     <Button type="submit" w="100%">
-                        Set my configuration
+                        {update ? "Update my configuration" : "Deploy the contract"}
                     </Button>
 
                 </chakra.form>
             </Box>
-        </Center>
+        </Center >
     );
 }
 
