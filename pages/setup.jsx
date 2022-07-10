@@ -11,6 +11,7 @@ import React, { useEffect, useState } from 'react'
 import { useMoralis } from 'react-moralis'
 import { child } from '@utils/constants';
 import UpdateSplitter from '@components/UpdateSplitter';
+import CreateSplitter from '@components/CreateSplitter';
 
 const setup = () => {
     const { user, isAuthenticated, isWeb3Enabled, isWeb3EnableLoading, web3, enableWeb3 } = useMoralis()

@@ -156,11 +156,6 @@ const SetupForm = ({ contract, update }) => {
     }, []);
 
 
-
-  /*   useEffect(() => {
-        
-    }, [update, contract]); */
-
     return (
         <Center h="80vh" flexDir="column">
             <Box shadow={"lg"} border="solid 1px #7fb5ff" rounded="md" px={10}>

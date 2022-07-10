@@ -1,9 +1,13 @@
 import { Box, Container, Heading, Stack, Text } from '@chakra-ui/react'
+import useContract from '@hooks/useRegistryContract'
 import MainLayout from '@layouts/MainLayout'
 import React from 'react'
 import SetupForm from './SetupForm'
 
-const CreateSplitter = () => {
+const CreateSplitter = ({signer}) => {
+    const {contract: kindly} = useContract({ signer })
+
+
     return (
         <MainLayout>
             <Container maxW={'3xl'}>

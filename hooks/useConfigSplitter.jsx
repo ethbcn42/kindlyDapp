@@ -17,7 +17,7 @@ const useConfigSplitter = ({signer, address}) => {
         async function fetchData() {
             const ong = await splitter.ong();
             const wallet = await splitter.wallet();
-            const percentage = await splitter.percent();
+            const percentage = (await splitter.percent()).toNumber();
             const currentConfig = {
                 ong,
                 wallet,
