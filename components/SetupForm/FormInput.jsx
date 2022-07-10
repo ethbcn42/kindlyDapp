@@ -1,16 +1,12 @@
 import {
-    chakra,
-    ChakraProps,
     FormControl as ChakraFormControl,
-    FormHelperText,
     FormLabel,
-    Grid,
     Input,
     Select,
-    Switch,
-    Textarea,
+    Stack
   } from "@chakra-ui/react";
-  import { ReactNode, useState } from "react";
+import CharityModal from "@components/CharityModal";
+import { useState } from "react";
   
   export const FormInput = ({
     label,
@@ -18,11 +14,8 @@ import {
     options,
     onChange,
     onBlur,
-    checker = () => false,
     value,
-    helperText,
     placeholder,
-    children,
     disabled,
     required,
     containerStyles = {},
@@ -39,7 +32,7 @@ import {
       disabled,
     };
 
-
+    const [orgInformation, setOrgInformation] = useState();
 
     return (
       <ChakraFormControl
@@ -50,28 +43,29 @@ import {
         <FormLabel fontWeight="light" {...labelStyles}>
           {label}
         </FormLabel>
-        {type === "textarea" && <Textarea {...inputProps} {...inputStyles} />}
         {type === "text" && <Input 
             {...inputProps}
             {...inputStyles}/>}
         {type === "select" && (
-          <Select {...inputProps} {...inputStyles}>
+            <Stack isInline spacing={8} align="center">
+          <Select {...inputProps} {...inputStyles}
+          onChange={(e)=>{
+            inputProps.onChange(e);
+            const singleOrg = options.filter(obj => obj.value === e.target.value);
+            setOrgInformation(singleOrg.length ? singleOrg[0]: undefined);
+            }}>
             {options?.map((option, i) => (
-              <option key={`kk-${option.value}-${i}`} value={option.value}>
-                {option.label}
-              </option>
+               <option key={`kk-${option.value}-${i}`} value={option.value}>
+                {option.name}
+              </option> 
             ))}
           </Select>
+            {
+                orgInformation &&
+           <CharityModal organization={orgInformation}/>}
+
+           </Stack>
         )}
-        <FormHelperText>
-          {checker() ? (
-            <chakra.span color="red.600" fontWeight="bold">
-              {checker()}
-            </chakra.span>
-          ) : (
-            <chakra.span>{helperText}</chakra.span>
-          )}
-        </FormHelperText>
       </ChakraFormControl>
     );
   };
