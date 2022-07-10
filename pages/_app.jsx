@@ -2,10 +2,15 @@ import { MoralisProvider } from "react-moralis";
 import { ChakraProvider } from '@chakra-ui/react';
 import { ToastContainer } from "react-toastify";
 
+
+import SEOHeader from '@components/SEO';
+
 import 'react-toastify/dist/ReactToastify.css';
 
 
 function MyApp({ Component, pageProps}) {
+  const { seo } = pageProps;
+
   return (
     <MoralisProvider
       appId={process.env.NEXT_PUBLIC_APP_ID}
@@ -23,6 +28,7 @@ function MyApp({ Component, pageProps}) {
           draggable
           pauseOnHover
         />
+        <SEOHeader {...seo}/>
         <Component {...pageProps} />
       </ChakraProvider>
     </MoralisProvider>
