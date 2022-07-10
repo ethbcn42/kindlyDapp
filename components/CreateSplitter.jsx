@@ -7,10 +7,6 @@ import SetupForm from './SetupForm'
 const CreateSplitter = ({signer}) => {
     const { contract } = useContract({ signer })
 
-    useEffect(() => {
-        console.log({ contract })
-    }, [contract]);
-
     return (
         <MainLayout>
             <Container maxW={'3xl'}>

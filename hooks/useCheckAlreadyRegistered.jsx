@@ -13,7 +13,6 @@ const useCheckAlreadyRegistered = ({signer}) => {
     useEffect(() => {
         async function checkIsAlreadyRegistered() {
             const registrationAddress = await kindly.Registry(user.get("ethAddress"));
-            console.log("registrationAddress: ", registrationAddress)
             setState({ 
                 ...state,
                 isRegistered: registrationAddress !== "0x0000000000000000000000000000000000000000",

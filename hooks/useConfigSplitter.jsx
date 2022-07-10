@@ -23,8 +23,6 @@ const useConfigSplitter = ({signer, address}) => {
                 wallet,
                 percent
             }
-
-            console.log("currentConfig: ", currentConfig)
             setState({ 
                 ...state,
                 currentConfig

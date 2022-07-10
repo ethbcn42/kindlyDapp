@@ -29,7 +29,6 @@ const SetupForm = ({ contract, update, currentConfig }) => {
                 ong: currentConfig.ong,
                 savingAccount: currentConfig.wallet
             });
-            console.log({ currentConfig });
         }
     }, [currentConfig]);
 
@@ -98,7 +97,6 @@ const SetupForm = ({ contract, update, currentConfig }) => {
 
                 if (contractONG && contractONG !== configuration.ong) {
                     const { merkleProof } = await (await fetch(`/api/nonprofit/${configuration.ong}`)).json()
-                    console.log({ merkleProof });
                     const txOng = await contract.setONG(configuration.ong, merkleProof);
                     notifySentTX();
                     await txOng.wait();

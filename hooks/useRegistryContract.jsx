@@ -20,7 +20,6 @@ const useContract = ({ signer }) => {
                         error: "Please Connect to Goerli Network."
                     }
                     const smartContract = new ethers.Contract(contract.addy, contract.abi, signer);
-                    console.log({smartContract});
                     setState({...state, contract: smartContract})
                 } catch (error) {
                     console.error(error);
