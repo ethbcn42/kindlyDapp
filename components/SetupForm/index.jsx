@@ -17,8 +17,8 @@ const SetupForm = ({ contract, update, currentConfig }) => {
     const { user } = useMoralis();
 
     const defaultSetup = {
-        percent: 20,
-        ong: undefined,
+        percent: currentConfig ? currentConfig.percent : 20,
+        ong: currentConfig ? currentConfig.ong : undefined,
         savingAccount: user && user.get("ethAddress") || null
     };
 
@@ -240,8 +240,8 @@ const SetupForm = ({ contract, update, currentConfig }) => {
                                 >
                                     {configuration.percent}%
                                 </SliderMark>
-                                <SliderTrack>
-                                    <SliderFilledTrack />
+                                <SliderTrack >
+                                    <SliderFilledTrack/>
                                 </SliderTrack>
                                 <SliderThumb />
                             </Slider>
@@ -258,7 +258,6 @@ const SetupForm = ({ contract, update, currentConfig }) => {
                         defaultValue={configuration.ong}
                         required
                     />
-                    {/* <SavinAccountChooser/> */}
                     <Checkbox onChange={() => {
                         setIsChecked(!isChecked)
                         setConfiguration({ ...configuration, savingAccount: user.get("ethAddress") })
