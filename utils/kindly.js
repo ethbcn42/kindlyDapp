@@ -4,7 +4,7 @@ export const createSnippet = (address) => `
 // take a note that you firstly have to deploy kindly contract to the network.
 receive() external payable {
     address _kindly = ${address};
-    (bool success, ) = kindly.call{value:msg.value}("");
+    (bool success, ) = _kindly.call{value:msg.value}("");
     require(success, "Error: money not sended");
 } 
 `

@@ -46,6 +46,10 @@ const UpdateSplitter = ({signer, registrationAddress}) => {
                         language={"javascript"}
                         theme={'dracula'}
                     />}
+                    <Text>Once you have deployed your NFT Smart Contract you have to go to Opensea and add your kindly address: {registrationAddress}.</Text>
+                    {
+                        registrationAddress && <img src="/opensea-collaborators-royalties.png" />
+                    }
                 </section>
             </Container>
         </MainLayout>
