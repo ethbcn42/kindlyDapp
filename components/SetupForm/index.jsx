@@ -61,16 +61,17 @@ const SetupForm = ({ contract, update }) => {
             console.log({configuration});
             // call to contract function
             if (!update) {
-                const txDeploy = await contract.createParticular(configuration.percent, configuration.charityOrganization, configuration.savingAccount);
-                const result = await txDeploy.wait();
-                console.log(result);
-            } else {
+                console.log("create", configuration.percent, configuration.ong, configuration.savingAccount, contract);
+                const txDeploy = await contract.createParticular(configuration.percent, configuration.ong, configuration.savingAccount);
+                //const result = await txDeploy.wait();
+                //console.log({result});
+            } /* else {
                 const contractONG = await contract.ong();
                 const contractWallet = await contract.wallet();
 
-                if (contractONG !== configuration.charityOrganization) {
-                    const { merkleProof } = await (await fetch(`/api/nonprofit/${configuration.charityOrganization}`)).json()
-                    const txOng = await contract.setONG(configuration.charityOrganization, merkleProof);
+                if (contractONG !== configuration.ong) {
+                    const { merkleProof } = await (await fetch(`/api/nonprofit/${configuration.ong}`)).json()
+                    const txOng = await contract.setONG(configuration.ong, merkleProof);
                     const result = await txOng.wait();
                     toast({
                         title: "ONG updated",
@@ -104,7 +105,7 @@ const SetupForm = ({ contract, update }) => {
                         isClosable: true,
                     });
                 }
-            }
+            } */
 
 
 
@@ -167,7 +168,6 @@ const SetupForm = ({ contract, update }) => {
                     w="calc(100% - 2rem)"
                     p={4}
                     my={4}
-
                 >
                     <ChakraFormControl
                         rounded="md"
@@ -212,7 +212,7 @@ const SetupForm = ({ contract, update }) => {
                     </ChakraFormControl>
 
                     <FormInput
-                        onChange={(e) => setConfiguration({ ...configuration, charityOrganization: e.target.value })}
+                        onChange={(e) => setConfiguration({ ...configuration, ong: e.target.value })}
                         label="Charity organization"
                         type="select"
                         options={organizations}

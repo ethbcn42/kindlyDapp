@@ -14,7 +14,7 @@ import UpdateSplitter from '@components/UpdateSplitter';
 import CreateSplitter from '@components/CreateSplitter';
 
 const setup = () => {
-    const { user, isAuthenticated, isWeb3Enabled, isWeb3EnableLoading, web3, enableWeb3 } = useMoralis()
+    const { user, isAuthenticated, isWeb3Enabled, web3, enableWeb3 } = useMoralis()
     const router = useRouter()
     const [signer, setSigner] = useState(null)
 
@@ -32,7 +32,7 @@ const setup = () => {
         return () => setSigner(null);
     }, [web3]);
 
-    const { contract: kindly } = useContract({ signer })
+    //const { contract: kindly } = useContract({ signer })
 
     useEffect(() => {
         if (isAuthenticated === false) router.replace("/");
@@ -41,7 +41,7 @@ const setup = () => {
     const { registrationAddress, isRegistered } = useCheckAlreadyRegistered({ signer })
 
     if (isRegistered === false) {
-        return <CreateSplitter />
+        return <CreateSplitter signer={signer}/>
     }
 
     if (isRegistered === true) {

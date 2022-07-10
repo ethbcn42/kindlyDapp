@@ -1,12 +1,15 @@
 import { Box, Container, Heading, Stack, Text } from '@chakra-ui/react'
 import useContract from '@hooks/useRegistryContract'
 import MainLayout from '@layouts/MainLayout'
-import React from 'react'
+import React, { useEffect } from 'react'
 import SetupForm from './SetupForm'
 
 const CreateSplitter = ({signer}) => {
-    const {contract: kindly} = useContract({ signer })
+    const { contract } = useContract({ signer })
 
+    useEffect(() => {
+        console.log({ contract })
+    }, [contract]);
 
     return (
         <MainLayout>
@@ -28,7 +31,7 @@ const CreateSplitter = ({signer}) => {
                             </Text>
                         </Heading>
                     </Stack>
-                    <SetupForm contract={kindly} />
+                    <SetupForm contract={contract} />
                 </section>
             </Container>
         </MainLayout>

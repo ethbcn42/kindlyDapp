@@ -20,6 +20,7 @@ const useContract = ({ signer }) => {
                         error: "Please Connect to Goerli Network."
                     }
                     const smartContract = new ethers.Contract(contract.addy, contract.abi, signer);
+                    console.log({smartContract});
                     setState({...state, contract: smartContract})
                 } catch (error) {
                     console.error(error);
@@ -29,14 +30,18 @@ const useContract = ({ signer }) => {
                     })
                 }
             }
-            if (user && signer && !state.contract) instantiateContract();
-            return () => {
-                setState(initialState)
-            }
+            if (user && signer && !state.contract) instantiateContract().then(() => {
+                console.log({state});
+            });
         }, [user, signer]);
 
+        useEffect(() => {
+            console.log({state});
+        }, [state]);
+
         return {
-            ...state,
+            contract: state.contract,
+            errors: state.errors
         }
 }
 
