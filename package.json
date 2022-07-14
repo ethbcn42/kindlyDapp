@@ -19,7 +19,7 @@
     "keccak256": "^1.0.6",
     "magic-sdk": "^8.1.1",
     "merkletreejs": "^0.2.32",
-    "moralis": "^1.8.1",
+    "moralis": "^1.9.0",
     "next": "^12.2.1",
     "react": "^18.2.0",
     "react-code-blocks": "^0.0.9-0",

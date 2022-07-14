@@ -4,9 +4,17 @@ import {
   Flex,
   HStack,
 } from '@chakra-ui/react';
-import ConnectButtonWeb3 from './Web3/ConnectButton';
+//import ConnectButtonWeb3 from './Web3/ConnectButton';
+
+import dynamic from 'next/dynamic';
+
 import Image from 'next/image';
 import Logo from './Logo';
+
+// dynamic import for web3 connect button
+const ConnectButtonWeb3 = dynamic(() => import('./Web3/ConnectButton'), {
+  ssr: false,
+});
 
 const Header = () => {
     return (

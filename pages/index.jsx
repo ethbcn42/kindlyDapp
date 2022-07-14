@@ -11,8 +11,16 @@ import {
   createIcon,
   Link,
 } from '@chakra-ui/react';
-import MainLayout from '@layouts/MainLayout';
 import { useRouter } from 'next/router';
+
+//import MainLayout from '@layouts/MainLayout';
+
+// dynamic import for mainLayout to fix hidration ui error
+import dynamic from 'next/dynamic';
+const MainLayout = dynamic(() => import('@layouts/MainLayout'), {
+  ssr: false,
+});
+
 
 export default function CallToActionWithAnnotation() {
   const router = useRouter();
