@@ -24,7 +24,6 @@ export const FormInput = ({
   required,
   containerStyles = {},
   inputStyles = {},
-  labelStyles = {},
 }) => {
 
   const inputProps = {
@@ -34,14 +33,9 @@ export const FormInput = ({
     value,
     placeholder: placeholder ? placeholder : label,
     disabled,
-    labelStyles
   };
 
-  const particularLabelStyles = {
-    ...inputProps.labelStyles,
-    mt: '2',
-    ml: '0',
-}
+
 
   const [orgInformation, setOrgInformation] = useState();
   const [orgOpened, setOrgOpened] = useState(false);
@@ -57,7 +51,7 @@ export const FormInput = ({
           alignItems="center"
           gap={2}
         >
-          <FormLabel fontWeight="light" {...particularLabelStyles}>
+          <FormLabel fontWeight="light" ml="-2.5" mt="2" fontSize="sm">
             {label}
           </FormLabel>
           <Tooltip py={2} rounded={"md"} shadow={"md"} color="white" shouldWrapChildren label=
@@ -73,7 +67,7 @@ export const FormInput = ({
           </Tooltip>
         </Flex>
         :
-        <FormLabel fontWeight="light" {...labelStyles}>
+        <FormLabel fontWeight="light" ml="-2.5" mt="2" fontSize="sm">
           {label}
         </FormLabel>}
       {type === "text" && <Input

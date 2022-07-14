@@ -39,11 +39,6 @@ const SetupForm = ({ contract, update, currentConfig }) => {
 
     const orgsOptions = [];
 
-    const labelStyles = {
-        mt: '2',
-        ml: '-2.5',
-        fontSize: 'sm',
-    }
 
     const toast = useToast();
     const router = useRouter();
@@ -209,7 +204,8 @@ const SetupForm = ({ contract, update, currentConfig }) => {
                             alignItems="center"
                             gap={2}
                         >
-                            <FormLabel fontWeight="light" {...labelStyles} fontSize="m" ml='0'>
+                            
+                            <FormLabel fontWeight="light" ml="-2.5" mt="2" fontSize="sm">
                                 Percentage
                             </FormLabel>
                             <Tooltip py={2} rounded={"md"} shadow={"md"} color="white" shouldWrapChildren label=
@@ -231,13 +227,13 @@ const SetupForm = ({ contract, update, currentConfig }) => {
                                     setConfiguration({ ...configuration, percent: val })
                                 }}
                             >
-                                <SliderMark value={25} {...labelStyles}>
+                                <SliderMark value={25} ml="-2.5" mt="2" fontSize="sm">
                                     25%
                                 </SliderMark>
-                                <SliderMark value={50} {...labelStyles}>
+                                <SliderMark value={50} ml="-2.5" mt="2" fontSize="sm">
                                     50%
                                 </SliderMark>
-                                <SliderMark value={75} {...labelStyles}>
+                                <SliderMark value={75} ml="-2.5" mt="2" fontSize="sm">
                                     75%
                                 </SliderMark>
                                 <SliderMark
@@ -274,7 +270,7 @@ const SetupForm = ({ contract, update, currentConfig }) => {
                         alignItems="center"
                         gap={2}
                     >
-                        <FormLabel fontWeight="light" {...labelStyles} fontSize="m" ml='0'>
+                        <FormLabel fontWeight="light" ml="-2.5" mt="2" fontSize="sm" fontSize="m" ml='0'>
                             Remainder destination address
                         </FormLabel>
                         
