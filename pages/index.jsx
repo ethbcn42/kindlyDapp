@@ -17,6 +17,7 @@ import { useRouter } from 'next/router';
 
 // dynamic import for mainLayout to fix hidration ui error
 import dynamic from 'next/dynamic';
+import Colabs from '@components/Colabs/Colabs';
 const MainLayout = dynamic(() => import('@layouts/MainLayout'), {
   ssr: false,
 });
@@ -59,34 +60,35 @@ export default function CallToActionWithAnnotation() {
                 bg: 'green.500',
               }}
               onClick={() => router.replace("/setup")}
-              >
-            Get Started
-          </Button>
-          <Link href="https://www.notion.so/Kindly-e5d246fbbf9047f19f40abff294a10b1" target={"_blank"} rel={"no-rel"}  variant={'link'} colorScheme={'blue'} size={'sm'}>
-            Learn more
-          </Link>
-          <Box>
-            <Icon
-              as={Arrow}
-              color={useColorModeValue('gray.800', 'gray.300')}
-              w={71}
-              position={'absolute'}
-              right={-71}
-              top={'10px'}
-            />
-            <Text
-              fontSize={'lg'}
-              fontFamily={'Caveat'}
-              position={'absolute'}
-              right={'-125px'}
-              top={'-15px'}
-              transform={'rotate(10deg)'}>
-              It's FAST & FREE
-            </Text>
-          </Box>
+            >
+              Get Started
+            </Button>
+            <Link href="https://www.notion.so/Kindly-e5d246fbbf9047f19f40abff294a10b1" target={"_blank"} rel={"no-rel"} variant={'link'} colorScheme={'blue'} size={'sm'}>
+              Learn more
+            </Link>
+            <Box>
+              <Icon
+                as={Arrow}
+                color={useColorModeValue('gray.800', 'gray.300')}
+                w={71}
+                position={'absolute'}
+                right={-71}
+                top={'10px'}
+              />
+              <Text
+                fontSize={'lg'}
+                fontFamily={'Caveat'}
+                position={'absolute'}
+                right={'-125px'}
+                top={'-15px'}
+                transform={'rotate(10deg)'}>
+                It's FAST & FREE
+              </Text>
+            </Box>
+          </Stack>
+          <Colabs />
         </Stack>
-      </Stack>
-    </Container>
+      </Container>
     </MainLayout >
   );
 }
