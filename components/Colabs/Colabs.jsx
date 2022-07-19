@@ -9,7 +9,7 @@ const ColabItem = ({ colab }) => {
 
     return (
         <Container>
-            <Image src={image} width={"100px"} height={"100px"} alt={name} />
+            <Image src={image} height={"80px"} alt={name} />
         </Container>
     )
 }
