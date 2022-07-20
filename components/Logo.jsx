@@ -8,7 +8,6 @@ const Logo = () => {
 
     <Link href="/">
       <Box as="a" cursor={"pointer"} >
-        
         <Image src="/logo-dark.svg" width="200" height={"64"}/>
       </Box>
     </Link>
