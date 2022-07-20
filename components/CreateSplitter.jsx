@@ -22,7 +22,7 @@ const CreateSplitter = ({signer}) => {
                             fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
                             lineHeight={'110%'}>
                             You are 3 minutes away from escaping the tax rabbit hole. <br />
-                            <Text as={'span'} color={'#7fb5ff'}>
+                            <Text as={'span'} color={'#2C83F2'}>
                                 Ready to change the world Alice?
                             </Text>
                         </Heading>

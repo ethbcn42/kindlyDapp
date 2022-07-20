@@ -33,7 +33,7 @@ const UpdateSplitter = ({signer, registrationAddress}) => {
                             fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
                             lineHeight={'110%'}>
                             Is there anything you would like to  <br />
-                            <Text as={'span'} color={'#7fb5ff'}>
+                            <Text as={'span'} color={'#2C83F2'}>
                             modify
                             </Text>
                             ?

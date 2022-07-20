@@ -38,7 +38,7 @@ export default function CallToActionWithAnnotation() {
             fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
             lineHeight={'110%'}>
             Use your taxes <br />
-            <Text as={'span'} color={'#7fb5ff'}>
+            <Text as={'span'} color={'#2C83F2'}>
               to change the world
             </Text>
           </Heading>
@@ -53,7 +53,7 @@ export default function CallToActionWithAnnotation() {
             position={'relative'}>
             <Button
               colorScheme={'green'}
-              bg={'#7fb5ff'}
+              bg={'#2C83F2'}
               rounded={'full'}
               px={6}
               _hover={{

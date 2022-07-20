@@ -17,7 +17,7 @@ const ColabItem = ({ colab }) => {
 const Colabs = () => {
     return (
         <Box width={"100%"} p={"8"} textAlign="center" alignItems={"center"} justifyItems="center">
-            <Text fontSize={"lg"} fontWeight="bold" borderBottom={"solid 1px"} color={"#7fb5ff"} p={"2"} mb="2">
+            <Text fontSize={"lg"} fontWeight="bold" borderBottom={"solid 1px"} color={"#2C83F2"} p={"2"} mb="2">
                 Partners
             </Text>
             <Grid templateColumns='repeat(3, 1fr)' gap={6}>

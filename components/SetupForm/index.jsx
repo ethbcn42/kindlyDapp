@@ -186,7 +186,7 @@ const SetupForm = ({ contract, update, currentConfig }) => {
 
     return (
         <Center h="80vh" flexDir="column">
-            <Box shadow={"lg"} border="solid 1px #7fb5ff" rounded="md" px={10}>
+            <Box shadow={"lg"} border="solid 1px #2C83F2" rounded="md" px={10}>
                 <chakra.form
                     maxW="400px"
                     onSubmit={handleSubmit}
@@ -216,7 +216,7 @@ const SetupForm = ({ contract, update, currentConfig }) => {
                                 isOpen={percentOpened}
                             >
                                 <Flex>
-                                    <AiOutlineQuestionCircle color="#7fb5ff" onClick={() =>setPercentOpened(!percentOpened)}/>
+                                    <AiOutlineQuestionCircle color="#2C83F2" onClick={() =>setPercentOpened(!percentOpened)}/>
                                 </Flex>
                             </Tooltip> 
                         </Flex>
@@ -281,7 +281,7 @@ const SetupForm = ({ contract, update, currentConfig }) => {
                                 isOpen={saverOpened}
                         >
                             <Flex>
-                                <AiOutlineQuestionCircle color="#7fb5ff"  onClick={() =>setSaverOpened(!saverOpened)}/>
+                                <AiOutlineQuestionCircle color="#2C83F2"  onClick={() =>setSaverOpened(!saverOpened)}/>
                             </Flex>
                         </Tooltip>
                     </Flex>

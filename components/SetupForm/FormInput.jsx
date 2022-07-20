@@ -62,7 +62,7 @@ export const FormInput = ({
 
           >
             <Flex>
-              <AiOutlineQuestionCircle color="#7fb5ff" onClick={() => setOrgOpened(!orgOpened)} />
+              <AiOutlineQuestionCircle color="#2C83F2" onClick={() => setOrgOpened(!orgOpened)} />
             </Flex>
           </Tooltip>
         </Flex>
