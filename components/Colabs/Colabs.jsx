@@ -21,7 +21,7 @@ const Colabs = () => {
                 Partners
             </Text>
             <Grid templateColumns='repeat(3, 1fr)' gap={6}>
-                {colabs.map((colab) => <ColabItem colab={colab} />)}
+                {colabs.map((colab) => <ColabItem key={colab?.name?.replace(" ", "-")} colab={colab} />)}
             </Grid>
         </Box>
     )

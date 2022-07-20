@@ -8,7 +8,7 @@ const Logo = () => {
 
     <Link href="/">
       <Box as="a" cursor={"pointer"} >
-        <Image src="/logo-dark.svg" width="200" height={"64"}/>
+        <Image src="/logo-dark.svg" width={"200"} height={"63"}/>
       </Box>
     </Link>
 
