@@ -1,14 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import {
-    Box, Button, Center, chakra, useToast, Checkbox, Slider,
-    SliderTrack, SliderFilledTrack, SliderThumb, SliderMark,
-    FormLabel, FormControl as ChakraFormControl, Tooltip, Flex,
+    Box, Button, Center, chakra, useToast, Checkbox, FormLabel, Tooltip, Flex,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 import { FormInput } from "./FormInput";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
+import PercentSlider from "./PercentSlider";
 
 
 const SetupForm = ({ contract, update, currentConfig }) => {
@@ -21,7 +20,6 @@ const SetupForm = ({ contract, update, currentConfig }) => {
     };
 
     const [configuration, setConfiguration] = useState(defaultSetup);
-    const [percentOpened, setPercentOpened] = useState(false);
     const [saverOpened, setSaverOpened] = useState(false);
 
     useEffect(() => {
@@ -64,7 +62,7 @@ const SetupForm = ({ contract, update, currentConfig }) => {
         });
     }
 
-    //CONSULTAR: spinner?? comprobaciones desde el front (que la address sea hex, el porcentaje puede ser con decimales?)
+    //CONSULTAR: spinner?? comprobaciones desde el front (que la address sea hex)
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -196,66 +194,11 @@ const SetupForm = ({ contract, update, currentConfig }) => {
                     p={4}
                     my={4}
                 >
-                    <ChakraFormControl
-                        rounded="md"
-                        mb={4}
-                    >
-                        <Flex
-                            alignItems="center"
-                            gap={2}
-                        >
-                            
-                            <FormLabel fontWeight="light" ml="-2.5" mt="2" fontSize="sm">
-                                Percentage
-                            </FormLabel>
-                            <Tooltip py={2} rounded={"md"} shadow={"md"} color="white" shouldWrapChildren label=
-                                {
-                                    update ? "Here you can modify the percentage you want to donate (based on your country's tax rate)."
-                                        : "First select the tax rate for the sale of NFTs in your country of residence."
-                                }
-                                isOpen={percentOpened}
-                            >
-                                <Flex>
-                                    <AiOutlineQuestionCircle color="#2C83F2" onClick={() =>setPercentOpened(!percentOpened)}/>
-                                </Flex>
-                            </Tooltip> 
-                        </Flex>
-                        <Box pt={6} pb={2}>
-                            <Slider
-                                defaultValue={configuration.percent}
-                                aria-label='slider-ex-6' onChange={(val) => {
-                                    setConfiguration({ ...configuration, percent: val })
-                                }}
-                            >
-                                <SliderMark value={25} ml="-2.5" mt="2" fontSize="sm">
-                                    25%
-                                </SliderMark>
-                                <SliderMark value={50} ml="-2.5" mt="2" fontSize="sm">
-                                    50%
-                                </SliderMark>
-                                <SliderMark value={75} ml="-2.5" mt="2" fontSize="sm">
-                                    75%
-                                </SliderMark>
-                                <SliderMark
-                                    value={configuration.percent}
-                                    defaultValue={configuration.percent}
-                                    textAlign='center'
-                                    bg='blue.500'
-                                    color='white'
-                                    mt='-10'
-                                    ml='-5'
-                                    w='12'
-                                >
-                                    {configuration.percent}%
-                                </SliderMark>
-                                <SliderTrack >
-                                    <SliderFilledTrack />
-                                </SliderTrack>
-                                <SliderThumb />
-                            </Slider>
-                        </Box>
-
-                    </ChakraFormControl>
+                    <PercentSlider 
+                        update={update}
+                        defaultValue={currentConfig.percent}
+                        onChange={(e) => setConfiguration({...configuration, percent: e})}
+                    />
                         <FormInput
                             onChange={(e) => setConfiguration({ ...configuration, ong: e.target.value })}
                             label={"Charity organization"}
@@ -270,7 +213,7 @@ const SetupForm = ({ contract, update, currentConfig }) => {
                         alignItems="center"
                         gap={2}
                     >
-                        <FormLabel fontWeight="light" ml="-2.5" mt="2" fontSize="sm" fontSize="m" ml='0'>
+                        <FormLabel fontWeight="light" ml="-2.5" mt="2" fontSize="sm">
                             Remainder destination address
                         </FormLabel>
                         
