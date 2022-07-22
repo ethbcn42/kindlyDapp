@@ -196,7 +196,7 @@ const SetupForm = ({ contract, update, currentConfig }) => {
                 >
                     <PercentSlider 
                         update={update}
-                        defaultValue={currentConfig.percent}
+                        defaultValue={configuration.percent}
                         onChange={(e) => setConfiguration({...configuration, percent: e})}
                     />
                         <FormInput

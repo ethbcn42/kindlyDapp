@@ -4,15 +4,19 @@ import {
     SliderTrack, SliderFilledTrack, SliderThumb, SliderMark,
     FormLabel, FormControl as ChakraFormControl, Tooltip, Flex
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 
 
 const PercentSlider = ({ onChange, defaultValue, update }) => {
 
-    const [percent, setPercent] = useState(defaultValue);
+    const [percent, setPercent] = useState(defaultValue ?? 0);
     const [percentOpened, setPercentOpened] = useState(false);
 
+    useEffect(() => {
+        if (defaultValue) setPercent(defaultValue);
+
+    }, [defaultValue]);
     return (
         <ChakraFormControl
             rounded="md"
@@ -39,8 +43,9 @@ const PercentSlider = ({ onChange, defaultValue, update }) => {
             </Flex>
             <Box pt={6} pb={2}>
                 <Slider
-                    defaultValue={percent ?? defaultValue}
-                    aria-label='slider-ex-6' onChange={(val) => {
+                    defaultValue={percent}
+                    aria-label='slider-ex-6' 
+                    onChange={(val) => {
                         setPercent(val);
                         onChange(val);
                     }}
@@ -63,13 +68,12 @@ const PercentSlider = ({ onChange, defaultValue, update }) => {
                         ml='-5'
                         w='12'
                     >
-                        {percent ?? defaultValue}%
+                        {percent}%
                     </SliderMark>
                     <SliderTrack >
-                        <SliderFilledTrack
-                        />
+                        <SliderFilledTrack/>
                     </SliderTrack>
-                    <SliderThumb />
+                    <SliderThumb/>
                 </Slider>
             </Box>
 
